@@ -4,7 +4,8 @@
   "description": "## Attention!! 本项目仅用于学习交流",
   "main": "src/index.js",
   "scripts": {
-    "start": "yarn run translate && pm2 start ./dist/index.js",
+    "start": "pm2 start ./dist/index.js",
+    "dev": "yarn run translate && node --harmony ./dist/index.js",
     "translate": "node_modules/babel-cli/bin/babel.js src --out-dir dist --copy-files --source-maps",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register"
   },
@@ -28,9 +29,11 @@
     "koa": "^2.3.0",
     "koa-bunyan-logger": "^2.0.0",
     "koa-router": "^7.2.1",
+    "koa2-swagger-ui": "^2.5.14",
     "mongodb": "^2.2.31",
     "random-useragent": "^0.3.1",
     "react-rest-kit": "^0.0.6",
+    "swagger-jsdoc": "^1.9.7",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

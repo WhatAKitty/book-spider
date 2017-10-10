@@ -1,8 +1,10 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 import logger from 'koa-bunyan-logger';
+import swaggerUI from 'koa2-swagger-ui';
 
 import BookApi from './api/book.api';
+import SwaggerApi from './api/swagger.api';
 import { init } from './db';
 
 const app = new Koa();
@@ -11,6 +13,7 @@ const router = new Router({
 });
 
 router.use(BookApi.routes(), BookApi.allowedMethods());
+router.use(SwaggerApi.routes(), SwaggerApi.allowedMethods());
 
 app
   .use(logger({
@@ -20,6 +23,12 @@ app
   .use(logger.requestIdContext())
   .use(logger.requestLogger())
   .use(router.routes())
+  .use(swaggerUI({
+    routePrefix: '/swagger-ui', // host at /swagger instead of default /docs
+    swaggerOptions: {
+      url: '/api/v1/swagger/api-docs.json', // example path to json
+    },
+  }))
   .use(router.allowedMethods());
 
 init(() => {
