@@ -1,0 +1,1343 @@
+// // 无
+// https://mage.if.qidian.com/Atom.axd/Api/Search/GetBookStoreWithBookList?action=-1&channel=-1&firstEntry=1&order=-1&p=all&pageIndex=4&size=-1&type=0&update=-1&vipBoutiqueSignstatus=-1a-1a-1
+// // 玄幻
+// https://mage.if.qidian.com/Atom.axd/Api/Search/GetBookStoreWithBookList?action=-1&channel=21&firstEntry=0&order=-1&p=all&pageIndex=1&size=-1&type=0&update=-1&vipBoutiqueSignstatus=-1a-1a-1
+// // 玄幻、总收藏排序
+// https://mage.if.qidian.com/Atom.axd/Api/Search/GetBookStoreWithBookList?action=-1&channel=21&firstEntry=0&order=9&p=all&pageIndex=1&size=-1&type=0&update=-1&vipBoutiqueSignstatus=-1a-1a-1
+// // 玄幻、总收藏排序、200万以上
+// https://mage.if.qidian.com/Atom.axd/Api/Search/GetBookStoreWithBookList?action=-1&channel=21&firstEntry=0&order=9&p=all&pageIndex=1&size=5&type=0&update=-1&vipBoutiqueSignstatus=-1a-1a-1
+
+{
+  "Orders": [
+    {
+      "Value": "-1",
+      "Name": "人气排序"
+    },
+    {
+      "Value": "6",
+      "Name": "更新时间排序"
+    },
+    {
+      "Value": "3",
+      "Name": "总推荐排序"
+    },
+    {
+      "Value": "9",
+      "Name": "总收藏排序"
+    },
+    {
+      "Value": "10",
+      "Name": "总月票排序"
+    },
+    {
+      "Value": "11",
+      "Name": "会员周点击排序"
+    },
+    {
+      "Value": "12",
+      "Name": "会员月点击排序"
+    },
+    {
+      "Value": "13",
+      "Name": "会员总点击排序"
+    },
+    {
+      "Value": "5",
+      "Name": "字数排序"
+    }
+  ],
+  "Filters": [
+    {
+      "Title": "站点",
+      "Name": "site",
+      "SelectType": 0,
+      "Groups": [
+        {
+          "Value": "0",
+          "Name": "女生"
+        },
+        {
+          "Value": "1",
+          "Name": "主站"
+        },
+        {
+          "Value": "2",
+          "Name": "文学"
+        },
+        {
+          "Value": "98",
+          "Name": "传统"
+        }
+      ]
+    },
+    {
+      "Title": "分类",
+      "Name": "channel",
+      "SelectType": 1,
+      "Groups": [
+        {
+          "Value": "10",
+          "Name": "灵异",
+          "Childs": [
+            {
+              "Value": "100070",
+              "Name": "恐怖惊悚"
+            },
+            {
+              "Value": "100071",
+              "Name": "灵异鬼怪"
+            },
+            {
+              "Value": "100072",
+              "Name": "悬疑侦探"
+            },
+            {
+              "Value": "100073",
+              "Name": "寻墓探险"
+            },
+            {
+              "Value": "100074",
+              "Name": "风水秘术"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "7",
+          "Name": "游戏",
+          "Childs": [
+            {
+              "Value": "100093",
+              "Name": "游戏异界"
+            },
+            {
+              "Value": "20103",
+              "Name": "游戏主播"
+            },
+            {
+              "Value": "20102",
+              "Name": "游戏系统"
+            },
+            {
+              "Value": "100090",
+              "Name": "电子竞技"
+            },
+            {
+              "Value": "100091",
+              "Name": "虚拟网游"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "21",
+          "Name": "玄幻",
+          "Childs": [
+            {
+              "Value": "100001",
+              "Name": "东方玄幻"
+            },
+            {
+              "Value": "100002",
+              "Name": "异世大陆"
+            },
+            {
+              "Value": "100003",
+              "Name": "王朝争霸"
+            },
+            {
+              "Value": "100004",
+              "Name": "高武世界"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "9",
+          "Name": "科幻",
+          "Childs": [
+            {
+              "Value": "100119",
+              "Name": "末世危机"
+            },
+            {
+              "Value": "100112",
+              "Name": "古武机甲"
+            },
+            {
+              "Value": "100113",
+              "Name": "未来世界"
+            },
+            {
+              "Value": "100115",
+              "Name": "星际文明"
+            },
+            {
+              "Value": "100116",
+              "Name": "超级科技"
+            },
+            {
+              "Value": "100117",
+              "Name": "时空穿梭"
+            },
+            {
+              "Value": "100118",
+              "Name": "进化变异"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "8",
+          "Name": "体育",
+          "Childs": [
+            {
+              "Value": "100100",
+              "Name": "篮球运动"
+            },
+            {
+              "Value": "100101",
+              "Name": "体育赛事"
+            },
+            {
+              "Value": "100103",
+              "Name": "足球运动"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "2",
+          "Name": "武侠",
+          "Childs": [
+            {
+              "Value": "20100",
+              "Name": "武侠同人"
+            },
+            {
+              "Value": "20099",
+              "Name": "古武未来"
+            },
+            {
+              "Value": "100020",
+              "Name": "传统武侠"
+            },
+            {
+              "Value": "100021",
+              "Name": "武侠幻想"
+            },
+            {
+              "Value": "100022",
+              "Name": "国术无双"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "1",
+          "Name": "奇幻",
+          "Childs": [
+            {
+              "Value": "100010",
+              "Name": "现代魔法"
+            },
+            {
+              "Value": "100011",
+              "Name": "剑与魔法"
+            },
+            {
+              "Value": "100012",
+              "Name": "史诗奇幻"
+            },
+            {
+              "Value": "100013",
+              "Name": "黑暗幻想"
+            },
+            {
+              "Value": "100014",
+              "Name": "历史神话"
+            },
+            {
+              "Value": "100015",
+              "Name": "另类幻想"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "12",
+          "Name": "二次元",
+          "Childs": [
+            {
+              "Value": "100120",
+              "Name": "变身入替"
+            },
+            {
+              "Value": "100121",
+              "Name": "原生幻想"
+            },
+            {
+              "Value": "100122",
+              "Name": "青春日常"
+            },
+            {
+              "Value": "100124",
+              "Name": "衍生同人"
+            },
+            {
+              "Value": "100125",
+              "Name": "搞笑吐槽"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "4",
+          "Name": "都市",
+          "Childs": [
+            {
+              "Value": "100041",
+              "Name": "都市生活"
+            },
+            {
+              "Value": "100141",
+              "Name": "娱乐明星"
+            },
+            {
+              "Value": "100042",
+              "Name": "恩怨情仇"
+            },
+            {
+              "Value": "100142",
+              "Name": "官场沉浮"
+            },
+            {
+              "Value": "100143",
+              "Name": "商战职场"
+            },
+            {
+              "Value": "100044",
+              "Name": "异术超能"
+            },
+            {
+              "Value": "100048",
+              "Name": "青春校园"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "20076",
+          "Name": "短篇",
+          "Childs": [
+            {
+              "Value": "100151",
+              "Name": "短篇小说"
+            },
+            {
+              "Value": "100152",
+              "Name": "儿童文学"
+            },
+            {
+              "Value": "100153",
+              "Name": "美文游记"
+            },
+            {
+              "Value": "100154",
+              "Name": "生活随笔"
+            },
+            {
+              "Value": "100155",
+              "Name": "评论文集"
+            },
+            {
+              "Value": "100156",
+              "Name": "诗歌散文"
+            },
+            {
+              "Value": "100157",
+              "Name": "人物传记"
+            },
+            {
+              "Value": "100158",
+              "Name": "影视剧本"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "22",
+          "Name": "仙侠",
+          "Childs": [
+            {
+              "Value": "20101",
+              "Name": "古典仙侠"
+            },
+            {
+              "Value": "100030",
+              "Name": "修真文明"
+            },
+            {
+              "Value": "100031",
+              "Name": "幻想修仙"
+            },
+            {
+              "Value": "100032",
+              "Name": "现代修真"
+            },
+            {
+              "Value": "100033",
+              "Name": "神话修真"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "15",
+          "Name": "现实",
+          "Childs": [
+            {
+              "Value": "20104",
+              "Name": "社会乡土"
+            },
+            {
+              "Value": "100046",
+              "Name": "现实百态"
+            },
+            {
+              "Value": "100047",
+              "Name": "爱情婚姻"
+            },
+            {
+              "Value": "20108",
+              "Name": "青春文学"
+            },
+            {
+              "Value": "20107",
+              "Name": "成功励志"
+            },
+            {
+              "Value": "20106",
+              "Name": "文学艺术"
+            },
+            {
+              "Value": "20105",
+              "Name": "生活时尚"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "5",
+          "Name": "历史",
+          "Childs": [
+            {
+              "Value": "100060",
+              "Name": "架空历史"
+            },
+            {
+              "Value": "100061",
+              "Name": "秦汉三国"
+            },
+            {
+              "Value": "100062",
+              "Name": "上古先秦"
+            },
+            {
+              "Value": "100063",
+              "Name": "两晋隋唐"
+            },
+            {
+              "Value": "100064",
+              "Name": "五代十国"
+            },
+            {
+              "Value": "100065",
+              "Name": "两宋元明"
+            },
+            {
+              "Value": "100066",
+              "Name": "清史民国"
+            },
+            {
+              "Value": "100067",
+              "Name": "外国历史"
+            },
+            {
+              "Value": "100068",
+              "Name": "历史传记"
+            },
+            {
+              "Value": "100069",
+              "Name": "民间传说"
+            }
+          ],
+          "FreeType": 1
+        },
+        {
+          "Value": "6",
+          "Name": "军事",
+          "Childs": [
+            {
+              "Value": "100050",
+              "Name": "军旅生涯"
+            },
+            {
+              "Value": "100051",
+              "Name": "军事战争"
+            },
+            {
+              "Value": "100052",
+              "Name": "战争幻想"
+            },
+            {
+              "Value": "100053",
+              "Name": "抗战烽火"
+            },
+            {
+              "Value": "100054",
+              "Name": "谍战特工"
+            }
+          ],
+          "FreeType": 1
+        }
+      ]
+    },
+    {
+      "Title": "字数",
+      "Name": "size",
+      "SelectType": 0,
+      "Groups": [
+        {
+          "Value": "-1",
+          "Name": "不限"
+        },
+        {
+          "Value": "1",
+          "Name": "30万以下"
+        },
+        {
+          "Value": "2",
+          "Name": "30万-50万"
+        },
+        {
+          "Value": "3",
+          "Name": "50万-100万"
+        },
+        {
+          "Value": "4",
+          "Name": "100万-200万"
+        },
+        {
+          "Value": "5",
+          "Name": "200万以上"
+        }
+      ]
+    },
+    {
+      "Title": "写作进度",
+      "Name": "action",
+      "SelectType": 0,
+      "Groups": [
+        {
+          "Value": "-1",
+          "Name": "全部"
+        },
+        {
+          "Value": "0",
+          "Name": "连载"
+        },
+        {
+          "Value": "1",
+          "Name": "完本"
+        }
+      ]
+    },
+    {
+      "Title": "更新时间",
+      "Name": "update",
+      "SelectType": 0,
+      "Groups": [
+        {
+          "Value": "-1",
+          "Name": "不限"
+        },
+        {
+          "Value": "3",
+          "Name": "三日内"
+        },
+        {
+          "Value": "7",
+          "Name": "七日内"
+        },
+        {
+          "Value": "15",
+          "Name": "半月内"
+        },
+        {
+          "Value": "31",
+          "Name": "一月内"
+        }
+      ]
+    },
+    {
+      "Title": "其他",
+      "Name": "vipBoutiqueSignstatus",
+      "SelectType": 0,
+      "Groups": [
+        {
+          "Value": "-1a-1a-1",
+          "Name": "不限"
+        },
+        {
+          "Value": "0a-1a-1",
+          "Name": "只看免费"
+        },
+        {
+          "Value": "1a-1a-1",
+          "Name": "只看VIP"
+        },
+        {
+          "Value": "-1a-1a1",
+          "Name": "只看A级签约"
+        }
+      ]
+    }
+  ],
+  "MatchAuthorInfo": null,
+  "BookListInfo": {
+    "BookListWithSameCategory": null,
+    "BookList": [],
+    "TotalCount": 0,
+    "TypeId_Names": null
+  },
+  "RecordCount": 0,
+  "Result": 0,
+  "Message": "成功",
+  "Data": [
+    {
+      "BookId": 3548786,
+      "BookName": "重生之都市修仙",
+      "AuthorId": 133955,
+      "Author": "十里剑神",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 372962923,
+      "LastUpdateChapterName": "第940章 天下谁人不识君（第一更）",
+      "LastChapterUpdateTime": 1496591736000,
+      "LastVipUpdateChapterId": 372962923,
+      "LastVipUpdateChapterName": "第940章 天下谁人不识君（第一更）",
+      "LastVipChapterUpdateTime": 1496591736000,
+      "WordsCount": 2841269,
+      "CategoryName": "都市",
+      "subCategoryName": "异术超能",
+      "CategoryId": 100044,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 4200175,
+      "BssRecomTotal": 770990,
+      "Label": "学生|淡定|重生",
+      "Description": "正式版：渡劫期大修士陈凡陨落在天劫中，却一梦五百年重回地球的年少时代。上一世我登临宇宙之巅，俯瞰万界，却无人相伴。这一世只愿不负前尘不负卿。通俗版：修行五百年的渡劫期修仙者",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "学生|淡定|重生",
+      "BookInternalId": 5609874,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 5410
+    },
+    {
+      "BookId": 1006853204,
+      "BookName": "文化入侵异世界",
+      "AuthorId": 3112022,
+      "Author": "姐姐的新娘",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 376292828,
+      "LastUpdateChapterName": "第三百一十二章 BOOM",
+      "LastChapterUpdateTime": 1507218601000,
+      "LastVipUpdateChapterId": 387528700,
+      "LastVipUpdateChapterName": "第三百一十二章 BOOM",
+      "LastVipChapterUpdateTime": 1507218601000,
+      "WordsCount": 705806,
+      "CategoryName": "科幻",
+      "subCategoryName": "时空穿梭",
+      "CategoryId": 100117,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 710955,
+      "BssRecomTotal": 168200,
+      "Label": "明星|种田文|赚钱",
+      "Description": "一群巨龙搬着小板凳日夜追看《权力游戏》。精灵大德鲁伊们因为《忠犬八公的故事》而潸然泪下。人类与矮人在《炉石传说》酒馆中为一张传说卡牌而大大出手。甚至就连神明也亲",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "明星|种田文|赚钱",
+      "BookInternalId": 5841993,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 5370
+    },
+    {
+      "BookId": 3242304,
+      "BookName": "异常生物见闻录",
+      "AuthorId": 4362948,
+      "Author": "远瞳",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 65427944,
+      "LastUpdateChapterName": "第一千六百二十一章 相生相克",
+      "LastChapterUpdateTime": 1507161900000,
+      "LastVipUpdateChapterId": 387483189,
+      "LastVipUpdateChapterName": "第一千六百二十一章 相生相克",
+      "LastVipChapterUpdateTime": 1507161900000,
+      "WordsCount": 4710160,
+      "CategoryName": "科幻",
+      "subCategoryName": "时空穿梭",
+      "CategoryId": 100117,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 5685703,
+      "BssRecomTotal": 434031,
+      "Label": null,
+      "Description": "郝仁，人如其名，是个好人，理想是平平安安过一辈子，当个穷不死但也发不了财的小房东——起码在他家里住进去一堆神经病生物之前是这样。一栋偏僻陈旧的大屋，一堆不怎么正常的人外生物，还有一份来",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 5258136304689301,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "none",
+      "BookInternalId": 5145314,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 5346
+    },
+    {
+      "BookId": 1010103283,
+      "BookName": "极品辅助系统",
+      "AuthorId": 20691,
+      "Author": "隐为者",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 387043587,
+      "LastUpdateChapterName": "第一百八十八章 变态年年有，这回特别凶（第五更）",
+      "LastChapterUpdateTime": 1507219802000,
+      "LastVipUpdateChapterId": 387549788,
+      "LastVipUpdateChapterName": "第一百八十八章 变态年年有，这回特别凶（第五更）",
+      "LastVipChapterUpdateTime": 1507219802000,
+      "WordsCount": 402867,
+      "CategoryName": "玄幻",
+      "subCategoryName": "异世大陆",
+      "CategoryId": 100002,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 1613246,
+      "BssRecomTotal": 53191,
+      "Label": "位面|宅男|系统流|轻松",
+      "Description": "冷暮雨见到卫小天持剑走了过来，又是愤怒又是惊恐，又是不甘又是绝望，最后咬牙闭上了眼睛，既然无法阻止，那就眼不见为净。就在冷暮雨自欺欺人的时候，耳边传来了一个既严肃又期待的声音。",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "位面|宅男|系统流|轻松",
+      "BookInternalId": 5958695,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 5192
+    },
+    {
+      "BookId": 3173393,
+      "BookName": "儒道至圣",
+      "AuthorId": 4362410,
+      "Author": "永恒之火",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 377189352,
+      "LastUpdateChapterName": "第2155章 圈套",
+      "LastChapterUpdateTime": 1499496759000,
+      "LastVipUpdateChapterId": 377189352,
+      "LastVipUpdateChapterName": "第2155章 圈套",
+      "LastVipChapterUpdateTime": 1499496759000,
+      "WordsCount": 5192106,
+      "CategoryName": "玄幻",
+      "subCategoryName": "东方玄幻",
+      "CategoryId": 100001,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 7446724,
+      "BssRecomTotal": 443503,
+      "Label": "坚毅|学生|穿越",
+      "Description": "这是一个读书人掌握天地之力的世界。才气在身，诗可杀敌，词能灭军，文章安天下。秀才提笔，纸上谈兵；举人杀敌，出口成章；进士一怒，唇枪舌剑。圣人驾临，口诛笔伐，可诛",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 4239493304280801,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "坚毅|学生|穿越",
+      "BookInternalId": 4815438,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 5186
+    },
+    {
+      "BookId": 1005781796,
+      "BookName": "超级浮空城",
+      "AuthorId": 4362380,
+      "Author": "诸生浮屠",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 372566193,
+      "LastUpdateChapterName": "第120章 上古邪物6",
+      "LastChapterUpdateTime": 1507172700000,
+      "LastVipUpdateChapterId": 387518132,
+      "LastVipUpdateChapterName": "第120章 上古邪物6",
+      "LastVipChapterUpdateTime": 1507172700000,
+      "WordsCount": 787209,
+      "CategoryName": "玄幻",
+      "subCategoryName": "异世大陆",
+      "CategoryId": 100002,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 872804,
+      "BssRecomTotal": 98651,
+      "Label": "位面|法师|淡定|种田文",
+      "Description": "建造有史以来最牛逼的浮空城，去探索无尽星海，收集各类可爱的魔物娘女仆。不过在这之前，史蒂芬必须先想办法把头上那高高悬挂的上古邪物【死兆之星】给怼掉。【PS：简介都不许我",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "位面|法师|淡定|种田文",
+      "BookInternalId": 5824340,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 5157
+    },
+    {
+      "BookId": 1009531496,
+      "BookName": "我的姐姐是大明星",
+      "AuthorId": 9639927,
+      "Author": "卖报小郎君",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 380115789,
+      "LastUpdateChapterName": "第两百八十一章 爸妈要听演唱会",
+      "LastChapterUpdateTime": 1507217659000,
+      "LastVipUpdateChapterId": 387522599,
+      "LastVipUpdateChapterName": "第两百八十一章 爸妈要听演唱会",
+      "LastVipChapterUpdateTime": 1507217659000,
+      "WordsCount": 823245,
+      "CategoryName": "都市",
+      "subCategoryName": "都市生活",
+      "CategoryId": 100041,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 795248,
+      "BssRecomTotal": 218527,
+      "Label": "明星|系统流|轻松",
+      "Description": "某年某月某天，祸水姐姐忽然说：“我要做明星。”秦泽淡定道：“老姐，你想被老爹活活打死，我不反对。”祸水姐姐义正言辞：“秦泽，姐姐照顾你这么多年，这个锅，你必须背。”",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "明星|系统流|轻松",
+      "BookInternalId": 5875568,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 5010
+    },
+    {
+      "BookId": 1004851718,
+      "BookName": "篮坛教皇",
+      "AuthorId": 4362702,
+      "Author": "兔来割草",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 359425191,
+      "LastUpdateChapterName": "第七百三十七章【保姆故事，祸不单行】",
+      "LastChapterUpdateTime": 1507107600000,
+      "LastVipUpdateChapterId": 387344514,
+      "LastVipUpdateChapterName": "第七百三十七章【保姆故事，祸不单行】",
+      "LastVipChapterUpdateTime": 1507107600000,
+      "WordsCount": 1654864,
+      "CategoryName": "体育",
+      "subCategoryName": "篮球运动",
+      "CategoryId": 100100,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 839883,
+      "BssRecomTotal": 74225,
+      "Label": "明星|赚钱|轻松|重生",
+      "Description": "网站NBA数据管理员重生到1997年的美国，一鸣惊人，成为了点废成金的篮坛教皇！书友群号：13774889",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "明星|赚钱|轻松|重生",
+      "BookInternalId": 5766663,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4891
+    },
+    {
+      "BookId": 1005399587,
+      "BookName": "宠物天王",
+      "AuthorId": 10715058,
+      "Author": "皆破",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 368684546,
+      "LastUpdateChapterName": "第449章 人情债",
+      "LastChapterUpdateTime": 1507175700000,
+      "LastVipUpdateChapterId": 387580385,
+      "LastVipUpdateChapterName": "第449章 人情债",
+      "LastVipChapterUpdateTime": 1507175700000,
+      "WordsCount": 1025603,
+      "CategoryName": "都市",
+      "subCategoryName": "都市生活",
+      "CategoryId": 100041,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 633942,
+      "BssRecomTotal": 197414,
+      "Label": "宠物|种田文|轻松",
+      "Description": "【1.下载一款可疑的游戏】【2.捕捉几只神奇的宠物当伙伴】【3.在轻松有趣的日常里，带领宠物店走上崛起之路】读者群：513717593（无粉丝值要求）",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "宠物|种田文|轻松",
+      "BookInternalId": 5790265,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4796
+    },
+    {
+      "BookId": 1005235019,
+      "BookName": "神级剑魂系统",
+      "AuthorId": 8011607,
+      "Author": "夜南听风",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 358485189,
+      "LastUpdateChapterName": "第五十一章 再遇蓝染",
+      "LastChapterUpdateTime": 1507143407000,
+      "LastVipUpdateChapterId": 387530240,
+      "LastVipUpdateChapterName": "第五十一章 再遇蓝染",
+      "LastVipChapterUpdateTime": 1507143407000,
+      "WordsCount": 1377741,
+      "CategoryName": "二次元",
+      "subCategoryName": "衍生同人",
+      "CategoryId": 100124,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 959125,
+      "BssRecomTotal": 289740,
+      "Label": "位面|学生|无限流|热血",
+      "Description": "森罗万象，皆为灰烬，流刃若火！穿越到海贼世界，大海贼时代十一年的罗亚，得到了一个能够无限强化，抽取各种技能的剑魂系统。流刃若火，镜花水月，月牙天冲，千本樱……“",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "位面|学生|无限流|热血",
+      "BookInternalId": 5772782,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4751
+    },
+    {
+      "BookId": 22919,
+      "BookName": "从零开始",
+      "AuthorId": 13342,
+      "Author": "雷云风暴",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 257422717,
+      "LastUpdateChapterName": "第23卷 第六章 放飞希望（完结篇）",
+      "LastChapterUpdateTime": 1456912800000,
+      "LastVipUpdateChapterId": 257422717,
+      "LastVipUpdateChapterName": "第23卷 第六章 放飞希望（完结篇）",
+      "LastVipChapterUpdateTime": 1456912800000,
+      "WordsCount": 18763950,
+      "CategoryName": "游戏",
+      "subCategoryName": "虚拟网游",
+      "CategoryId": 100091,
+      "BookStatus": "完本",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 66356278,
+      "BssRecomTotal": 441406,
+      "Label": "技术流",
+      "Description": "想要让游戏币兑换现实货币，那就一定要有一个强大的经济实体来担保其可兑换性。而这个实体只能是一国的政府。可是政府为什么要出面担保一个游戏的真实货币兑换能力？战争也可以这样打。兵不血刃一样",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 4237214604247301,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "技术流",
+      "BookInternalId": 4011954,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4655
+    },
+    {
+      "BookId": 3452145,
+      "BookName": "天启之门",
+      "AuthorId": 4362305,
+      "Author": "跳舞",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 380367154,
+      "LastUpdateChapterName": "第六百零二章 【韩必！】",
+      "LastChapterUpdateTime": 1501590532000,
+      "LastVipUpdateChapterId": 380367154,
+      "LastVipUpdateChapterName": "第六百零二章 【韩必！】",
+      "LastVipChapterUpdateTime": 1501590532000,
+      "WordsCount": 2383922,
+      "CategoryName": "都市",
+      "subCategoryName": "异术超能",
+      "CategoryId": 100044,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 5910566,
+      "BssRecomTotal": 231709,
+      "Label": "变身|强者回归|腹黑",
+      "Description": "【NPC蹂躏玩家！吊打穿越者！】我的世界我做主！哪里轮到你们这些魂淡来作威作福？！走上【史上最强救世主】的道路，注定充满了刺激！……陈小练：从今天开",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "变身|强者回归|腹黑",
+      "BookInternalId": 5304465,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4631
+    },
+    {
+      "BookId": 1009934766,
+      "BookName": "火影之活久见",
+      "AuthorId": 400279617,
+      "Author": "李四羊",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 385680529,
+      "LastUpdateChapterName": "第133章 水门班",
+      "LastChapterUpdateTime": 1507167598000,
+      "LastVipUpdateChapterId": 387471302,
+      "LastVipUpdateChapterName": "第133章 水门班",
+      "LastVipChapterUpdateTime": 1507167598000,
+      "WordsCount": 438398,
+      "CategoryName": "二次元",
+      "subCategoryName": "衍生同人",
+      "CategoryId": 100124,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 688101,
+      "BssRecomTotal": 139649,
+      "Label": "热血|系统流",
+      "Description": "穿越火影世界，重生漩涡一族，获得属性系统，天赋背景俱佳，漩涡正彦表示很满意。        “但是，火影战国是什么鬼？到了木叶建立，我大概得……70岁？”        直到有一天，正彦发现了系统",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "热血|系统流",
+      "BookInternalId": 5931263,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4612
+    },
+    {
+      "BookId": 1735921,
+      "BookName": "遮天",
+      "AuthorId": 4362453,
+      "Author": "辰东",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 340500403,
+      "LastUpdateChapterName": "我的新书《圣墟》已上传",
+      "LastChapterUpdateTime": 1477980025000,
+      "LastVipUpdateChapterId": 340500403,
+      "LastVipUpdateChapterName": "我的新书《圣墟》已上传",
+      "LastVipChapterUpdateTime": 1477980025000,
+      "WordsCount": 6320828,
+      "CategoryName": "仙侠",
+      "subCategoryName": "修真文明",
+      "CategoryId": 100030,
+      "BookStatus": "完本",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 70312412,
+      "BssRecomTotal": 760395,
+      "Label": "热血",
+      "Description": "冰冷与黑暗并存的宇宙深处，九具庞大的龙尸拉着一口青铜古棺，亘古长存。 这是太空探测器在枯寂的宇宙中捕捉到的一幅极其震撼的画面。 九龙拉棺，究竟是回到了上古，还",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "热血",
+      "BookInternalId": 4839587,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4588
+    },
+    {
+      "BookId": 1009584934,
+      "BookName": "超武穿梭",
+      "AuthorId": 4362623,
+      "Author": "EK巧克力",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 380207682,
+      "LastUpdateChapterName": "实在是坚持不下去了！",
+      "LastChapterUpdateTime": 1506685996000,
+      "LastVipUpdateChapterId": 387029132,
+      "LastVipUpdateChapterName": "实在是坚持不下去了！",
+      "LastVipChapterUpdateTime": 1506685996000,
+      "WordsCount": 802906,
+      "CategoryName": "玄幻",
+      "subCategoryName": "高武世界",
+      "CategoryId": 100004,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 475700,
+      "BssRecomTotal": 46392,
+      "Label": "位面|学生|热血|穿越",
+      "Description": "地球正处星际时代，科技发达，古武与机甲结合，在星空中横扫四方。乾元大陆，纯粹的武道世界，强大的武者飞天遁地，遨游星空。一枚神奇的时空水晶，让云帆拥有穿梭地球与",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "位面|学生|热血|穿越",
+      "BookInternalId": 5884749,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4532
+    },
+    {
+      "BookId": 1005405437,
+      "BookName": "老衲要还俗",
+      "AuthorId": 8278346,
+      "Author": "一梦黄粱",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 368498205,
+      "LastUpdateChapterName": "第654章 佛祖那抽奖抽的",
+      "LastChapterUpdateTime": 1507197600000,
+      "LastVipUpdateChapterId": 387523643,
+      "LastVipUpdateChapterName": "第654章 佛祖那抽奖抽的",
+      "LastVipChapterUpdateTime": 1507197600000,
+      "WordsCount": 1375153,
+      "CategoryName": "都市",
+      "subCategoryName": "都市生活",
+      "CategoryId": 100041,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 3966540,
+      "BssRecomTotal": 343512,
+      "Label": "孤儿|系统流|赚钱|轻松",
+      "Description": "东北偏远山区的一指山上有一座小庙，名叫一指庙。庙宇不大，却神奇无比。庙中有米，十里飘香。庙中有水，甘甜无比，胜过琼浆。庙中有佛，心诚必灵。",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "孤儿|系统流|赚钱|轻松",
+      "BookInternalId": 5791198,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4504
+    },
+    {
+      "BookId": 1010539872,
+      "BookName": "间谍的战争",
+      "AuthorId": 3688308,
+      "Author": "如水意",
+      "IsVip": 0,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 387478345,
+      "LastUpdateChapterName": "第四十章 鬼医",
+      "LastChapterUpdateTime": 1507176300000,
+      "LastVipUpdateChapterId": 0,
+      "LastVipUpdateChapterName": "",
+      "LastVipChapterUpdateTime": 0,
+      "WordsCount": 108022,
+      "CategoryName": "军事",
+      "subCategoryName": "谍战特工",
+      "CategoryId": 100054,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 58342,
+      "BssRecomTotal": 33934,
+      "Label": "技术流|机智|特工",
+      "Description": "作为一个普通人却要向间谍宣战，最好的办法是同样成为一个间谍。 作为一个间谍，要向一个实力强大的间谍组织开战，那就加入一个同样强大的间谍组织。 如果无法加入任何一个强大的间谍组织，那就自己建立起一个",
+      "ReadingType": 4,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "技术流|机智|特工",
+      "BookInternalId": 6044454,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4407
+    },
+    {
+      "BookId": 3022294,
+      "BookName": "魔天记",
+      "AuthorId": 4362771,
+      "Author": "忘语",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 372308412,
+      "LastUpdateChapterName": "第一千零二十二章 误会",
+      "LastChapterUpdateTime": 1495988282000,
+      "LastVipUpdateChapterId": 372308412,
+      "LastVipUpdateChapterName": "第一千零二十二章 误会",
+      "LastVipChapterUpdateTime": 1495988282000,
+      "WordsCount": 4747317,
+      "CategoryName": "仙侠",
+      "subCategoryName": "幻想修仙",
+      "CategoryId": 100031,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 14456055,
+      "BssRecomTotal": 282875,
+      "Label": "冷酷",
+      "Description": "一名在无数凶徒中长大的亡命少年，在从被囚之地逃出升天后，又机缘巧合下另换身份，进入某一修炼宗门中，从此一个无法想象的大千世界向他敞开了大门，但阴差阳错下，又不得不面临随时可能丧失神智，化身成滔天魔",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 3591569303373001,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "冷酷",
+      "BookInternalId": 4907833,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4299
+    },
+    {
+      "BookId": 1003797438,
+      "BookName": "重生日本当厨神",
+      "AuthorId": 5171311,
+      "Author": "千回转",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 387524252,
+      "LastUpdateChapterName": "第895章：刮来的台风（上）",
+      "LastChapterUpdateTime": 1507218585000,
+      "LastVipUpdateChapterId": 387524252,
+      "LastVipUpdateChapterName": "第895章：刮来的台风（上）",
+      "LastVipChapterUpdateTime": 1507218585000,
+      "WordsCount": 2022434,
+      "CategoryName": "都市",
+      "subCategoryName": "都市生活",
+      "CategoryId": 100041,
+      "BookStatus": "连载",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 1621958,
+      "BssRecomTotal": 112771,
+      "Label": "系统流|轻松",
+      "Description": "作死发下大宏愿，宁愿吃料理到撑死的夏羽，来到一个令他完全陌生的食戟之灵世界。什么，厨神养成？“你要满足的不仅仅是正常人类的食欲，还有各种各样的妖魔，百鬼夜行，用食物感化它们",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "系统流|轻松",
+      "BookInternalId": 5663637,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4283
+    },
+    {
+      "BookId": 1004595865,
+      "BookName": "主神崛起",
+      "AuthorId": 4186784,
+      "Author": "文抄公",
+      "IsVip": 1,
+      "ImageStatus": 1,
+      "LastUpdateChapterID": 377079838,
+      "LastUpdateChapterName": "完本感言兼推荐新书逍遥梦路",
+      "LastChapterUpdateTime": 1499411827000,
+      "LastVipUpdateChapterId": 377079838,
+      "LastVipUpdateChapterName": "完本感言兼推荐新书逍遥梦路",
+      "LastVipChapterUpdateTime": 1499411827000,
+      "WordsCount": 2587520,
+      "CategoryName": "游戏",
+      "subCategoryName": "游戏异界",
+      "CategoryId": 100093,
+      "BookStatus": "完本",
+      "EnableBookUnitBuy": 0,
+      "EnableBookUnitLease": 0,
+      "BssReadTotal": 1846084,
+      "BssRecomTotal": 161621,
+      "Label": "位面|宅男|穿越|腹黑",
+      "Description": "一觉醒来穿越成反派？这剧本不对！还抢了人家的妹子？又有一个强势的姐姐？剧本更不对了！居然还有主神空间，诸天万界？我一定是在做梦！吴明淡定地木着脸，继续着征程。",
+      "ReadingType": 5,
+      "AlgInfo": "",
+      "Adid": 0,
+      "overrating": null,
+      "SourceType": 0,
+      "SourceDesc": null,
+      "AuthorTagId": "位面|宅男|穿越|腹黑",
+      "BookInternalId": 5701870,
+      "prob": 0.0,
+      "recommendRate": null,
+      "staticscore1": 4282
+    }
+  ],
+  "CardList": null,
+  "ExactType": -1,
+  "HitItemId": null,
+  "HitItemDesc": null
+}

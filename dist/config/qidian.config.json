@@ -1,0 +1,18 @@
+{
+  "path": "https://www.qidian.com",
+  "book": {
+    "path": "/info",
+    "urls": {
+
+    },
+    "elements": {
+
+    }
+  },
+  "urls": {
+    "books_index": "/all"
+  },
+  "elements": {
+    "list_ele": ".all-book-list > .book-img-text > .all-img-list"
+  }
+}
