@@ -4,7 +4,7 @@
   "description": "## Attention!! 本项目仅用于学习交流",
   "main": "src/index.js",
   "scripts": {
-    "start": "yarn run translate && node --harmony ./dist/index.js",
+    "start": "yarn run translate && pm2 start ./dist/index.js",
     "translate": "node_modules/babel-cli/bin/babel.js src --out-dir dist --copy-files --source-maps",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register"
   },
