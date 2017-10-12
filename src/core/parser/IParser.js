@@ -337,10 +337,10 @@ class IParser {
     }
 
     // 通过章节获取章节内容
-    // const chapterContent = await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, {content: 1, title: 1, _id: 0});
-    // if (chapterContent) {
-    //   return chapterContent;
-    // }
+    const chapterContent = await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, {content: 1, title: 1, _id: 0});
+    if (chapterContent) {
+      return chapterContent;
+    }
 
     let book = await db().collection('book').findOne({ bookId, type: this.getKey() });
     if (!book) {
