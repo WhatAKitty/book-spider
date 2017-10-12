@@ -504,30 +504,44 @@ var IParser = function () {
                 throw '[IParser] 查询章节，同步最新列表失败';
 
               case 9:
-                latestChapter = data[data.length - 1];
-                _context6.next = 12;
-                return (0, _db.db)().collection('book_chapters').findOne({ title: latestChapter, type: this.getKey() });
+                latestChapter = data.Chapters[data.Chapters.length - 1];
 
-              case 12:
-                result = _context6.sent;
+                console.log(latestChapter);
+                _context6.t0 = latestChapter;
 
-                if (result) {
+                if (!_context6.t0) {
                   _context6.next = 16;
                   break;
                 }
 
-                _context6.next = 16;
-                return this.syncChapters({ bookId: bookId });
+                _context6.next = 15;
+                return (0, _db.db)().collection('book_chapters').findOne({ bookId: bookId, title: latestChapter.n, type: this.getKey() });
+
+              case 15:
+                _context6.t0 = _context6.sent;
 
               case 16:
-                console.log('start sync chapters');
-                _context6.next = 19;
-                return (0, _db.db)().collection('book_chapters').find({ type: this.getKey() }).sort({ sort: 1 }).toArray();
+                result = _context6.t0;
 
-              case 19:
+                console.log(result);
+
+                if (result) {
+                  _context6.next = 21;
+                  break;
+                }
+
+                _context6.next = 21;
+                return this.syncChapters({ bookId: bookId });
+
+              case 21:
+                console.log('start sync chapters');
+                _context6.next = 24;
+                return (0, _db.db)().collection('book_chapters').find({ bookId: bookId, type: this.getKey() }).sort({ sort: 1 }).toArray();
+
+              case 24:
                 return _context6.abrupt('return', _context6.sent);
 
-              case 20:
+              case 25:
               case 'end':
                 return _context6.stop();
             }

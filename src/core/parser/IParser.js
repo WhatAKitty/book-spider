@@ -237,14 +237,15 @@ class IParser {
       throw '[IParser] 查询章节，同步最新列表失败';
     }
 
-    const latestChapter = data[data.length - 1];
-    const result = await db().collection('book_chapters').findOne({ title: latestChapter, type: this.getKey() });
+    const latestChapter = data.Chapters[data.Chapters.length - 1];
+    const result = latestChapter && await db().collection('book_chapters').findOne({ bookId, title: latestChapter.n, type: this.getKey() });
     if (!result) {
       // 最新章节不相同
       await this.syncChapters({ bookId });
     }
+    
     console.log('start sync chapters');
-    return await db().collection('book_chapters').find({ type: this.getKey() }).sort({ sort: 1 }).toArray();
+    return await db().collection('book_chapters').find({ bookId, type: this.getKey() }).sort({ sort: 1 }).toArray();
   }
 
   async syncChapters({
