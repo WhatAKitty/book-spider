@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "pm2 start ./dist/index.js",
-    "dev": "yarn run translate && node --harmony ./dist/index.js",
+    "dev": "yarn run translate && __DEV__=true node --harmony ./dist/index.js  ",
     "translate": "node_modules/babel-cli/bin/babel.js src --out-dir dist --copy-files --source-maps",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register"
   },

@@ -1,4 +1,7 @@
 import Koa from 'koa';
+import fs from 'fs';
+import http from 'http';
+import https from 'https';
 import Router from 'koa-router';
 import serve from 'koa-static';
 import logger from 'koa-bunyan-logger';
@@ -39,5 +42,11 @@ app
   }));
 
 init(() => {
-  app.listen(3000);
+  const options = !process.env.__DEV__ && {
+    key: fs.readFileSync('../cert/server.key'),
+    cert: fs.readFileSync('../cert/server.crt'),
+  }
+
+  http.createServer(app.callback()).listen(3000);
+  !process.env.__DEV__ && https.createServer(options, app.callback()).listen(3443);
 });

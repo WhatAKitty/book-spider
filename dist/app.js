@@ -4,6 +4,18 @@ var _koa = require('koa');
 
 var _koa2 = _interopRequireDefault(_koa);
 
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _http = require('http');
+
+var _http2 = _interopRequireDefault(_http);
+
+var _https = require('https');
+
+var _https2 = _interopRequireDefault(_https);
+
 var _koaRouter = require('koa-router');
 
 var _koaRouter2 = _interopRequireDefault(_koaRouter);
@@ -59,6 +71,12 @@ app.use((0, _koaStatic2.default)('./static', {
 }));
 
 (0, _db.init)(function () {
-  app.listen(3000);
+  var options = !process.env.__DEV__ && {
+    key: _fs2.default.readFileSync('../cert/server.key'),
+    cert: _fs2.default.readFileSync('../cert/server.crt')
+  };
+
+  _http2.default.createServer(app.callback()).listen(3000);
+  !process.env.__DEV__ && _https2.default.createServer(options, app.callback()).listen(3443);
 });
 //# sourceMappingURL=app.js.map
