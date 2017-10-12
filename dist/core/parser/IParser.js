@@ -663,7 +663,7 @@ var IParser = function () {
                     bookName: bookName,
                     title: chapter.title,
                     link: chapter.link,
-                    sort: index + 1
+                    sort: +chapter.id
                   };
                 });
                 _context7.prev = 36;
@@ -719,7 +719,7 @@ var IParser = function () {
         var bookId = _ref19.bookId,
             chapterId = _ref19.chapterId;
 
-        var chapter, book, _ref20, qdBookInfo, bookInfo;
+        var chapter, chapterContent, book, _ref20, qdBookInfo, bookInfo;
 
         return _regenerator2.default.wrap(function _callee8$(_context8) {
           while (1) {
@@ -748,20 +748,34 @@ var IParser = function () {
 
               case 7:
                 _context8.next = 9;
-                return (0, _db.db)().collection('book').findOne({ bookId: bookId, type: this.getKey() });
+                return (0, _db.db)().collection('book_chapter_text').findOne({ bookId: bookId, chapterId: chapterId, type: this.getKey() }, { content: 1, title: 1, _id: 0 });
 
               case 9:
-                book = _context8.sent;
+                chapterContent = _context8.sent;
 
-                if (book) {
-                  _context8.next = 17;
+                if (!chapterContent) {
+                  _context8.next = 12;
                   break;
                 }
 
-                _context8.next = 13;
+                return _context8.abrupt('return', chapterContent);
+
+              case 12:
+                _context8.next = 14;
+                return (0, _db.db)().collection('book').findOne({ bookId: bookId, type: this.getKey() });
+
+              case 14:
+                book = _context8.sent;
+
+                if (book) {
+                  _context8.next = 22;
+                  break;
+                }
+
+                _context8.next = 18;
                 return this.findBook(bookId);
 
-              case 13:
+              case 18:
                 _ref20 = _context8.sent;
                 qdBookInfo = _ref20.qdBookInfo;
                 bookInfo = _ref20.bookInfo;
@@ -772,8 +786,8 @@ var IParser = function () {
                   link: bookInfo.link
                 };
 
-              case 17:
-                _context8.next = 19;
+              case 22:
+                _context8.next = 24;
                 return this.parseJob({
                   chapter: {
                     id: chapterId,
@@ -783,14 +797,14 @@ var IParser = function () {
                   book: book
                 });
 
-              case 19:
-                _context8.next = 21;
+              case 24:
+                _context8.next = 26;
                 return (0, _db.db)().collection('book_chapter_text').findOne({ bookId: bookId, chapterId: chapterId, type: this.getKey() }, { content: 1, title: 1, _id: 0 });
 
-              case 21:
+              case 26:
                 return _context8.abrupt('return', _context8.sent);
 
-              case 22:
+              case 27:
               case 'end':
                 return _context8.stop();
             }

@@ -236,19 +236,17 @@ var CommonParser = function (_IParser) {
                 $content.find('br').replaceWith('\r\n');
                 chapterContent = $content.text();
 
-                console.log(chapterContent);
-
                 if (!(!chapterContent || !chapterContent.length)) {
-                  _context3.next = 12;
+                  _context3.next = 11;
                   break;
                 }
 
                 return _context3.abrupt('return', null);
 
-              case 12:
+              case 11:
                 return _context3.abrupt('return', chapterContent);
 
-              case 13:
+              case 12:
               case 'end':
                 return _context3.stop();
             }

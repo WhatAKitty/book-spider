@@ -307,7 +307,7 @@ class IParser {
           bookName,
           title: chapter.title,
           link: chapter.link,
-          sort: index + 1,
+          sort: +chapter.id,
         };
       });
     try {
