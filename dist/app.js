@@ -8,6 +8,10 @@ var _koaRouter = require('koa-router');
 
 var _koaRouter2 = _interopRequireDefault(_koaRouter);
 
+var _koaStatic = require('koa-static');
+
+var _koaStatic2 = _interopRequireDefault(_koaStatic);
+
 var _koaBunyanLogger = require('koa-bunyan-logger');
 
 var _koaBunyanLogger2 = _interopRequireDefault(_koaBunyanLogger);
@@ -15,6 +19,10 @@ var _koaBunyanLogger2 = _interopRequireDefault(_koaBunyanLogger);
 var _koa2SwaggerUi = require('koa2-swagger-ui');
 
 var _koa2SwaggerUi2 = _interopRequireDefault(_koa2SwaggerUi);
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
 
 var _book = require('./api/book.api');
 
@@ -36,15 +44,15 @@ var router = new _koaRouter2.default({
 router.use(_book2.default.routes(), _book2.default.allowedMethods());
 router.use(_swagger2.default.routes(), _swagger2.default.allowedMethods());
 
-app.use((0, _koaBunyanLogger2.default)({
+app.use((0, _koaStatic2.default)('./static')).use((0, _koaBunyanLogger2.default)({
   name: 'book-spider',
   level: 'debug'
-})).use(_koaBunyanLogger2.default.requestIdContext()).use(_koaBunyanLogger2.default.requestLogger()).use(router.routes()).use((0, _koa2SwaggerUi2.default)({
+})).use(_koaBunyanLogger2.default.requestIdContext()).use(_koaBunyanLogger2.default.requestLogger()).use(router.routes()).use(router.allowedMethods()).use((0, _koa2SwaggerUi2.default)({
   routePrefix: '/swagger-ui', // host at /swagger instead of default /docs
   swaggerOptions: {
     url: '/api/v1/swagger/api-docs.json' // example path to json
   }
-})).use(router.allowedMethods());
+}));
 
 (0, _db.init)(function () {
   app.listen(3000);
