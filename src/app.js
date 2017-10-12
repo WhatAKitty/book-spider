@@ -18,7 +18,11 @@ router.use(BookApi.routes(), BookApi.allowedMethods());
 router.use(SwaggerApi.routes(), SwaggerApi.allowedMethods());
 
 app
-  .use(serve('./static'))
+  .use(serve('./static', {
+    maxage: 1000 * 60 * 60 * 24 * 365,
+    hidden: true,
+    gzip: true,
+  }))
   .use(logger({
     name: 'book-spider',
     level: 'debug',

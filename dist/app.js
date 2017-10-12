@@ -44,7 +44,11 @@ var router = new _koaRouter2.default({
 router.use(_book2.default.routes(), _book2.default.allowedMethods());
 router.use(_swagger2.default.routes(), _swagger2.default.allowedMethods());
 
-app.use((0, _koaStatic2.default)('./static')).use((0, _koaBunyanLogger2.default)({
+app.use((0, _koaStatic2.default)('./static', {
+  maxage: 1000 * 60 * 60 * 24 * 365,
+  hidden: true,
+  gzip: true
+})).use((0, _koaBunyanLogger2.default)({
   name: 'book-spider',
   level: 'debug'
 })).use(_koaBunyanLogger2.default.requestIdContext()).use(_koaBunyanLogger2.default.requestLogger()).use(router.routes()).use(router.allowedMethods()).use((0, _koa2SwaggerUi2.default)({
