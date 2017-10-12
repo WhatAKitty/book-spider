@@ -445,7 +445,7 @@ BookApi.get('/:bookId/chapters/newest', async (ctx, next) => {
  *       description: 源站编号
  *       in: path
  *       required: true
- *       type: integer
+ *       type: string
  *       enum:
  *         - qbg
  *         - ybdu
@@ -504,7 +504,7 @@ BookApi.get('/:source/:bookId/chapters', async (ctx, next) => {
  *       description: 源站编号
  *       in: path
  *       required: true
- *       type: integer
+ *       type: string
  *       enum:
  *         - qbg
  *         - ybdu
@@ -534,6 +534,8 @@ BookApi.get('/:source/:bookId/chapters', async (ctx, next) => {
  *           properties:
  *             content:
  *               type: string
+ *             title:
+ *               type: string
  *       400:
  *         description: 无法获取图书章节内容
  *         schema:
@@ -541,11 +543,11 @@ BookApi.get('/:source/:bookId/chapters', async (ctx, next) => {
  */
 BookApi.get('/:source/:bookId/:chapterId', async (ctx, next) => {
   try {
-    const chapter = await parserFactory(ctx.params.source).syncContent({ chapterId: ctx.params.chapterId });
+    const chapter = await parserFactory(ctx.params.source).syncContent({ bookId: ctx.params.bookId, chapterId: ctx.params.chapterId });
 
     ctx.status = 200;
     ctx.body = {
-      content: chapter.content,
+      ...chapter,
     };
   } catch (err) {
     ctx.status = 400;

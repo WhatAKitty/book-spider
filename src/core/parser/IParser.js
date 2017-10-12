@@ -324,20 +324,27 @@ class IParser {
   }
 
   async syncContent({
+    bookId,
     chapterId,
   }) {
     if (!chapterId) {
       throw `[IParser] 同步图书章节缺少chapterId`;
     }
 
-    const chapter = await db().collection('book_chapters').findOne({ chapterId: chapterId, type: this.getKey() });
+    const chapter = await db().collection('book_chapters').findOne({ bookId, chapterId, type: this.getKey() });
     if (!chapter) {
       throw `[IParser] 未找到章节${chapterid}`;
     }
 
-    let book = await db().collection('book').findOne({ bookId: chapter.bookId, type: this.getKey() });
+    // 通过章节获取章节内容
+    const chapterContent = await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, {content: 1, title: 1, _id: 0});
+    if (chapterContent) {
+      return chapterContent;
+    }
+
+    let book = await db().collection('book').findOne({ bookId, type: this.getKey() });
     if (!book) {
-      const { qdBookInfo, bookInfo } = await this.findBook(chapter.bookId);
+      const { qdBookInfo, bookInfo } = await this.findBook(bookId);
       book = {
         bookId: qdBookInfo.BookId,
         bookName: qdBookInfo.BookName,
@@ -354,7 +361,7 @@ class IParser {
       book,
     });
 
-    return await db().collection('book_chapter_text').findOne({ chapterId, type: this.getKey() });
+    return await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, {content: 1, title: 1, _id: 0});
   }
 
   async syncAllContent({

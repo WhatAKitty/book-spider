@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _regenerator = require('babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -587,7 +591,7 @@ BookApi.get('/:bookId/chapters/newest', function () {
  *       description: 源站编号
  *       in: path
  *       required: true
- *       type: integer
+ *       type: string
  *       enum:
  *         - qbg
  *         - ybdu
@@ -675,7 +679,7 @@ BookApi.get('/:source/:bookId/chapters', function () {
  *       description: 源站编号
  *       in: path
  *       required: true
- *       type: integer
+ *       type: string
  *       enum:
  *         - qbg
  *         - ybdu
@@ -705,6 +709,8 @@ BookApi.get('/:source/:bookId/chapters', function () {
  *           properties:
  *             content:
  *               type: string
+ *             title:
+ *               type: string
  *       400:
  *         description: 无法获取图书章节内容
  *         schema:
@@ -719,16 +725,14 @@ BookApi.get('/:source/:bookId/:chapterId', function () {
           case 0:
             _context6.prev = 0;
             _context6.next = 3;
-            return (0, _parser2.default)(ctx.params.source).syncContent({ chapterId: ctx.params.chapterId });
+            return (0, _parser2.default)(ctx.params.source).syncContent({ bookId: ctx.params.bookId, chapterId: ctx.params.chapterId });
 
           case 3:
             chapter = _context6.sent;
 
 
             ctx.status = 200;
-            ctx.body = {
-              content: chapter.content
-            };
+            ctx.body = (0, _extends3.default)({}, chapter);
             _context6.next = 12;
             break;
 
