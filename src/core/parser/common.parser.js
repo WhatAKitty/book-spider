@@ -93,11 +93,10 @@ class CommonParser extends IParser {
     }
 
     let $ = cheerio.load(contentHtml);
-    $('.ad00').remove();
-    $('.chapter_Turnpage').remove();
-    $('<br>').replaceWith('\r\n');
-    $('<br/>').replaceWith('\r\n');
-    const chapterContent = $(super.getConfig().eles.content).text();
+    let $content = $(super.getConfig().eles.content);
+
+    $content.find('br').replaceWith('\r\n');
+    const chapterContent = $content.text();
     if (!chapterContent || !chapterContent.length) {
       // 无内容
       return null;

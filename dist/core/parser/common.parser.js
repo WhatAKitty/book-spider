@@ -210,7 +210,7 @@ var CommonParser = function (_IParser) {
     key: 'parseContent',
     value: function () {
       var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(link) {
-        var contentHtml, $, chapterContent;
+        var contentHtml, $, $content, chapterContent;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -230,24 +230,25 @@ var CommonParser = function (_IParser) {
 
               case 5:
                 $ = _cheerio2.default.load(contentHtml);
+                $content = $((0, _get3.default)(CommonParser.prototype.__proto__ || Object.getPrototypeOf(CommonParser.prototype), 'getConfig', this).call(this).eles.content);
 
-                $('.ad00').remove();
-                $('.chapter_Turnpage').remove();
-                $('<br>').replaceWith('\r\n');
-                $('<br/>').replaceWith('\r\n');
-                chapterContent = $((0, _get3.default)(CommonParser.prototype.__proto__ || Object.getPrototypeOf(CommonParser.prototype), 'getConfig', this).call(this).eles.content).text();
+
+                $content.find('br').replaceWith('\r\n');
+                chapterContent = $content.text();
+
+                console.log(chapterContent);
 
                 if (!(!chapterContent || !chapterContent.length)) {
-                  _context3.next = 13;
+                  _context3.next = 12;
                   break;
                 }
 
                 return _context3.abrupt('return', null);
 
-              case 13:
+              case 12:
                 return _context3.abrupt('return', chapterContent);
 
-              case 14:
+              case 13:
               case 'end':
                 return _context3.stop();
             }
