@@ -110,15 +110,16 @@ var Qidian = {
 
     var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-      var _params$channel, channel, _params$firstEntry, firstEntry, _params$order, order, _params$pageIndex, pageIndex, _params$size, size, _ref3, data, err;
+      var _params$channel, channel, _params$firstEntry, firstEntry, _params$order, order, _params$pageIndex, pageIndex, _params$size, size, _params$key, key, _ref3, data, err;
 
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _params$channel = params.channel, channel = _params$channel === undefined ? -1 : _params$channel, _params$firstEntry = params.firstEntry, firstEntry = _params$firstEntry === undefined ? 1 : _params$firstEntry, _params$order = params.order, order = _params$order === undefined ? -1 : _params$order, _params$pageIndex = params.pageIndex, pageIndex = _params$pageIndex === undefined ? 1 : _params$pageIndex, _params$size = params.size, size = _params$size === undefined ? -1 : _params$size;
+              _params$channel = params.channel, channel = _params$channel === undefined ? -1 : _params$channel, _params$firstEntry = params.firstEntry, firstEntry = _params$firstEntry === undefined ? 1 : _params$firstEntry, _params$order = params.order, order = _params$order === undefined ? -1 : _params$order, _params$pageIndex = params.pageIndex, pageIndex = _params$pageIndex === undefined ? 1 : _params$pageIndex, _params$size = params.size, size = _params$size === undefined ? -1 : _params$size, _params$key = params.key, key = _params$key === undefined ? '' : _params$key;
               _context2.next = 3;
               return rest.GET(_config.config.urls.search, {
+                key: key,
                 action: -1,
                 channel: channel,
                 firstEntry: firstEntry,

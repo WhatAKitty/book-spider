@@ -287,6 +287,11 @@ BookApi.get('/recommends', async (ctx, next) => {
  *     produces:
  *       - application/json
  *     parameters:
+ *       - name: key
+ *         description: 关键字
+ *         in: query
+ *         required: false
+ *         type: string
  *       - name: channel
  *         description: 图书来源渠道
  *         in: query
@@ -337,7 +342,7 @@ BookApi.get('/', async (ctx, next) => {
   }
 
   ctx.status = 200;
-  ctx.body = data;
+  ctx.body = data || [];
 });
 
 /**

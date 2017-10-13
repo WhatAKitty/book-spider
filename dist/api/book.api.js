@@ -344,6 +344,11 @@ BookApi.get('/recommends', function () {
  *     produces:
  *       - application/json
  *     parameters:
+ *       - name: key
+ *         description: 关键字
+ *         in: query
+ *         required: false
+ *         type: string
  *       - name: channel
  *         description: 图书来源渠道
  *         in: query
@@ -412,7 +417,7 @@ BookApi.get('/', function () {
           case 9:
 
             ctx.status = 200;
-            ctx.body = data;
+            ctx.body = data || [];
 
           case 11:
           case 'end':
