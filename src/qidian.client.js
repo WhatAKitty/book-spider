@@ -52,8 +52,9 @@ const Qidian = {
     };
   },
   async searchBooks(params = {}) {
-    const { channel = -1, firstEntry = 1, order = -1, pageIndex = 1, size = -1 } = params;
+    const { channel = -1, firstEntry = 1, order = -1, pageIndex = 1, size = -1, key = '' } = params;
     const { data, err } = await rest.GET(config.urls.search, {
+      key,
       action: -1,
       channel,
       firstEntry,
@@ -66,92 +67,92 @@ const Qidian = {
       vipBoutiqueSignstatus: '-1a-1a-1',
     });
 
-    if (err) {
-      // 返回错误
-      return { err };
-    }
+if (err) {
+  // 返回错误
+  return { err };
+}
 
-    if (data.Result !== 0) {
-      // 起点返回错误
-      return { err: data.Message };
-    }
+if (data.Result !== 0) {
+  // 起点返回错误
+  return { err: data.Message };
+}
 
-    return { data: data.Data };
+return { data: data.Data };
   },
-  async bookInfo(params = {}) {
-    const { bookId, iosDeviceType = 0 } = params;
-    const { data, err } = await rest.GET(config.urls.info, {
-      BookId: bookId,
-      iosDeviceType,
-      isOutBook: 0,
-      preview: 0,
-    }, {
-        headers: {
-          'qdheader': qdheader,
-        },
-      });
+async bookInfo(params = {}) {
+  const { bookId, iosDeviceType = 0 } = params;
+  const { data, err } = await rest.GET(config.urls.info, {
+    BookId: bookId,
+    iosDeviceType,
+    isOutBook: 0,
+    preview: 0,
+  }, {
+      headers: {
+        'qdheader': qdheader,
+      },
+    });
 
-    if (err) {
-      // 返回错误
-      return { err };
-    }
+  if (err) {
+    // 返回错误
+    return { err };
+  }
 
-    if (data.Result !== 0) {
-      // 起点返回错误
-      return { err: data.Message };
-    }
+  if (data.Result !== 0) {
+    // 起点返回错误
+    return { err: data.Message };
+  }
 
-    return { data: data.Data };
-  },
-  async chapters(params = {}) {
-    const { bookId, pageIndex = -1 } = params;
-    const { data, err } = await rest.GET(config.urls.chapters, {
-      bookId,
-      pageIndex,
-      requestSource: 0,
-      timeStamp: 0,
-    }, {
-        headers: {
-          'qdheader': qdheader,
-        },
-      });
+  return { data: data.Data };
+},
+async chapters(params = {}) {
+  const { bookId, pageIndex = -1 } = params;
+  const { data, err } = await rest.GET(config.urls.chapters, {
+    bookId,
+    pageIndex,
+    requestSource: 0,
+    timeStamp: 0,
+  }, {
+      headers: {
+        'qdheader': qdheader,
+      },
+    });
 
-    if (err) {
-      // 返回错误
-      return { err };
-    }
+  if (err) {
+    // 返回错误
+    return { err };
+  }
 
-    if (data.Result !== 0) {
-      // 起点返回错误
-      return { err: data.Message };
-    }
+  if (data.Result !== 0) {
+    // 起点返回错误
+    return { err: data.Message };
+  }
 
-    return { data: data.Data };
-  },
-  async comments(params = {}) {
-    const { bookId, pageIndex = 1 } = params;
-    const { data, err } = await rest.GET(config.urls.comments, {
-      ReviewType: 112,
-      bookId,
-      pageIndex,
-    }, {
-        headers: {
-          'qdheader': qdheader,
-        },
-      });
+  return { data: data.Data };
+},
+async comments(params = {}) {
+  const { bookId, pageIndex = 1 } = params;
+  const { data, err } = await rest.GET(config.urls.comments, {
+    ReviewType: 112,
+    bookId,
+    pageIndex,
+  }, {
+      headers: {
+        'qdheader': qdheader,
+      },
+    });
 
-    if (err) {
-      // 返回错误
-      return { err };
-    }
+  if (err) {
+    // 返回错误
+    return { err };
+  }
 
-    if (data.Result !== 0) {
-      // 起点返回错误
-      return { err: data.Message };
-    }
+  if (data.Result !== 0) {
+    // 起点返回错误
+    return { err: data.Message };
+  }
 
-    return { data: data.Data };
-  },
+  return { data: data.Data };
+},
 }
 
 export default Qidian;
