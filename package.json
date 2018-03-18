@@ -1,6 +1,6 @@
 {
   "name": "book-spider",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "## Attention!! 本项目仅用于学习交流",
   "main": "src/index.js",
   "scripts": {
