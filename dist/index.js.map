@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;AAAA;;AACA;;AAEA","file":"index.js","sourcesContent":["import 'babel-polyfill';\nimport 'isomorphic-fetch';\n\nimport './app';\n"]}
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":"aAAA;AACA;;AAEA","file":"index.js","sourcesContent":["import 'babel-polyfill';\nimport 'isomorphic-fetch';\n\nimport './app';\n"]}

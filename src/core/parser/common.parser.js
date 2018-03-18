@@ -26,7 +26,7 @@ class CommonParser extends IParser {
 
     let $ = cheerio.load(searchHtml);
     const resultList = $(super.getConfig().eles.search).toArray();
-
+    
     if (resultList.length === 0) {
       // 未搜索到该书
       return null;

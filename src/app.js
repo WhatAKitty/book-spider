@@ -9,15 +9,15 @@ import swaggerUI from 'koa2-swagger-ui';
 import path from 'path';
 
 import BookApi from './api/book.api';
+import BookApiV2 from './api/book.api2';
 import SwaggerApi from './api/swagger.api';
 import { init } from './db';
 
 const app = new Koa();
-const router = new Router({
-  prefix: '/api/v1',
-});
+const router = new Router();
 
 router.use(BookApi.routes(), BookApi.allowedMethods());
+router.use(BookApiV2.routes(), BookApiV2.allowedMethods());
 router.use(SwaggerApi.routes(), SwaggerApi.allowedMethods());
 
 app

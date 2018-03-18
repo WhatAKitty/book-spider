@@ -6,9 +6,9 @@ import config from '../../config/source.js/www.biquge5200.com.source';
 
 class BQGParser extends CommonParser {
 
-  constructor() {
+  constructor(conf = config) {
     super({
-      config,
+      config: conf,
     });
   }
 

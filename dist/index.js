@@ -1,7 +1,4 @@
-'use strict';
-
-require('babel-polyfill');
-
+'use strict';require('babel-polyfill');
 require('isomorphic-fetch');
 
 require('./app');

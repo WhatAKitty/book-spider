@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../src/config/index.js"],"names":["default"],"mappings":";;;;;;;;;;;2CAASA,O","file":"index.js","sourcesContent":["export { default as config } from './config.js';\n"]}
+{"version":3,"sources":["../../src/config/index.js"],"names":["default"],"mappings":"yOAASA,O","file":"index.js","sourcesContent":["export { default as config } from './config.js';\n"]}

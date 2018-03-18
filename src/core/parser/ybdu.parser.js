@@ -10,8 +10,6 @@ class YBDUParser extends CommonParser {
     super({
       config,
     });
-
-    // this.searchPage = this.searchPage.bind(this);
   }
 
   /**

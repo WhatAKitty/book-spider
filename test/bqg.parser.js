@@ -1,9 +1,10 @@
 import 'babel-polyfill';
+import 'isomorphic-fetch';
 import expect from 'expect.js';
 
 import BQGParser from '../src/core/parser/bqg.parser';
 
-describe('test ybdu parser', () => {
+describe('test bqg parser', () => {
   it('test parser create', async () => {
     expect(() => {
       new BQGParser();

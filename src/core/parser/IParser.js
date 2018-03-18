@@ -55,7 +55,7 @@ class IParser {
     this.getKey = this.getKey.bind(this);
     this.getConfig = this.getConfig.bind(this);
 
-    this.get = this.get.bind(this);
+    this.obain = this.obain.bind(this);
     this.start = this.start.bind(this);
     this.obainHtml = this.obainHtml.bind(this);
     this.searchBook = this.searchBook.bind(this);
@@ -80,18 +80,32 @@ class IParser {
     return this[_config];
   }
 
-  async get(link, params) {
-    const { data, err } = await rest.GET(link, params, {
+  async obain(link, params, method = 'GET', another = {}) {
+    const options = {
+      ...another,
       headers: {
         'User-Agent': randomUseragent.getRandom(),
+        ...(another.headers || {}),
       },
-    });
-    if (err) {
+      qsStringifyOptions: {
+        encodeURIComponent: uri => uri,     // with no encode
+      },
+    }
+
+    let result = {};
+    if (method === 'POST') {
+      result = await rest.rest(link, options);
+    } else {
+      result = await rest.GET(link, params, options);
+    }
+
+
+    if (result.err) {
       console.error('request get failed ', err);
       return null;
     }
 
-    return data;
+    return result.data;
   }
 
   /**
@@ -125,9 +139,9 @@ class IParser {
    * @param {*} link 
    * @param {*} params
    */
-  async obainHtml(link, params = {}) {
+  async obainHtml(link, params = {}, method, options) {
     console.log('[IParser] start obain html ', link, params);
-    return await this.get(link, params);
+    return await this.obain(link, params, method, options);
   }
 
   async parseJob({ chapter, book }) {
@@ -139,7 +153,7 @@ class IParser {
 
     const { bookId, bookName } = book;
 
-    // const chapterLink = `${book.link.endsWith('/') ? book.link : `${book.link}/`}${chapter.link}`;
+    // const chapterLink = `${book.link.startsWith('/') ? book.link : `${book.link}/`}${chapter.link}`;
     const chapterLink = chapter.link;
     console.log('[IParser] 解析文章内容来自', chapterLink);
     const text = await this.parseContent(chapterLink);
@@ -243,7 +257,7 @@ class IParser {
       // 最新章节不相同
       await this.syncChapters({ bookId });
     }
-    
+
     console.log('start sync chapters');
     return await db().collection('book_chapters').find({ bookId, type: this.getKey() }).sort({ sort: 1 }).toArray();
   }
@@ -337,7 +351,7 @@ class IParser {
     }
 
     // 通过章节获取章节内容
-    const chapterContent = await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, {content: 1, title: 1, _id: 0});
+    const chapterContent = await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, { content: 1, title: 1, _id: 0 });
     if (chapterContent) {
       return chapterContent;
     }
@@ -361,7 +375,7 @@ class IParser {
       book,
     });
 
-    return await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, {content: 1, title: 1, _id: 0});
+    return await db().collection('book_chapter_text').findOne({ bookId, chapterId, type: this.getKey() }, { content: 1, title: 1, _id: 0 });
   }
 
   async syncAllContent({

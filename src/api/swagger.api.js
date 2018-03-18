@@ -4,7 +4,7 @@ import Router from 'koa-router';
 import swaggerJSDoc from 'swagger-jsdoc';
 
 const SwaggerApi = new Router({
-  prefix: '/swagger',
+  prefix: '/api/v1/swagger',
 });
 
 const options = {

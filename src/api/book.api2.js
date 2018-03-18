@@ -1,10 +1,10 @@
 
 import Router from 'koa-router';
-import QidianClient from '../qidian.client';
+import ZhuishuClient from '../zhuishu.client';
 import parserFactory from '../core/parser';
 
 const BookApi = new Router({
-  prefix: '/api/v1/books',
+  prefix: '/api/v2/books',
 });
 
 /**
@@ -18,109 +18,49 @@ const BookApi = new Router({
  *   Book:
  *     type: object
  *     properties:
- *       BookId:
- *         type: number
- *       BookName:
+ *       _id:
  *         type: string
- *       AuthorId:
- *         type: number
- *       AuthorName:
+ *       title:
  *         type: string
- *       Author:
+ *       author:
  *         type: string
- *       CategoryId:
- *         type: number
- *       CategoryName:
+ *       longIntro:
  *         type: string
- *       ImageStatus:
- *         type: number
- *       LastUpdateChapterID:
- *         type: number
- *       LastUpdateChapterName:
+ *       conver:
  *         type: string
- *       LastChapterUpdateTime:
+ *       creater:
  *         type: number
- *       LastVipUpdateChapterId:
- *         type: number
- *       LastVipUpdateChapterName:
+ *       majorCate:
  *         type: string
- *       LastVipChapterUpdateTime:
- *         type: number
- *       IsVip:
- *         type: number
- *       BookStatus:
- *         type: number
- *       WordsCount:
- *         type: number
- *       Label:
+ *       minorCate:
  *         type: string
- *       IsQin:
- *         type: number
- *       BssReadTotal:
- *         type: number
- *       BssRecomTotal:
- *         type: number
- *       Price:
- *         type: number
- *       NewPrice:
- *         type: number
- *       Recommendation:
+ *       rating:
+ *         type: object
+ *         properties:
+ *           count:
+ *             type: number,
+ *           score:
+ *             type: number,
+ *           isEffect:
+ *             type: boolean,
+ *       hasCopyright:
+ *         type: boolean
+ *       updated:
  *         type: string
- *       RecommenId:
+ *       chaptersCount:
  *         type: number
- *       GroupName:
+ *       lastChapter:
  *         type: string
- *       ReadingType:
- *         type: number
- *       AlgInfo:
- *         type: string
- *       PartCount:
- *         type: number
- *       SourceBookId:
- *         type: number
- *       BookPartInfo:
- *         type: string
- *       ChargeType:
- *         type: number
- *       TotalPrice:
- *         type: number
- *       Description:
- *         type: string
- *   GroupItem:
- *     type: object
- *     properties:
- *       Title:
- *         type: string
- *       Subtitle:
- *         type: string
- *       ActionUrl:
- *         type: string
- *       Direction:
- *         type: string
- *       UpdateDesc:
- *         type: string
- *       Data:
+ *       gender:
  *         type: array
- *         items:
- *           $ref: '#/definitions/Book'
- *   Cover:
- *     type: object
- *     properties:
- *       Pic:
- *         type: string
- *       ActionUrl:
+ *       tags:
+ *         type: array
+ *       cat:
  *         type: string
  *   Recommends:
- *     type: object
- *     properties:
- *       CoverList:
- *         type: array
- *         items:
- *           $ref: '#/definitions/Cover'
- *       Group:
- *         type: array
- *         items:
- *           $ref: '#/definitions/GroupItem'
+ *     type: array
+ *     items:
+ *       $ref: '#/definitions/Book'
  *   Chapter:
  *     type: object
  *     properties:
@@ -247,12 +187,27 @@ const BookApi = new Router({
 
 /**
  * @swagger
- * /api/v1/books/recommends:
+ * /api/v2/books/recommends:
  *   get:
  *     description: 推荐书籍
  *     produces:
  *       - application/json
  *     parameters:
+ *       - name: gender
+ *         description: 分类（'male', 'female', 'press'）
+ *         in: query
+ *         required: true
+ *         type: string
+ *       - name: start
+ *         description: 开始索引
+ *         in: query
+ *         required: false
+ *         type: integer
+ *       - name: limit
+ *         description: 总查询条数
+ *         in: query
+ *         required: false
+ *         type: integer
  *     responses:
  *       200:
  *         description: 成功获取书籍推荐
@@ -265,7 +220,7 @@ const BookApi = new Router({
  *         
  */
 BookApi.get('/recommends', async (ctx, next) => {
-  const { data, err } = await QidianClient.recommends(ctx.query);
+  const { data, err } = await ZhuishuClient.recommends(ctx.query)
 
   if (err) {
     ctx.status = 400;
@@ -281,7 +236,7 @@ BookApi.get('/recommends', async (ctx, next) => {
 
 /**
  * @swagger
- * /api/v1/books:
+ * /api/v2/books:
  *   get:
  *     description: 图书查询
  *     produces:
@@ -292,31 +247,6 @@ BookApi.get('/recommends', async (ctx, next) => {
  *         in: query
  *         required: false
  *         type: string
- *       - name: channel
- *         description: 图书来源渠道
- *         in: query
- *         required: false
- *         type: integer
- *       - name: firstEntry
- *         description: 图书来源渠道
- *         in: query
- *         required: false
- *         type: integer
- *       - name: order
- *         description: 查询排序
- *         in: query
- *         required: false
- *         type: integer
- *       - name: pageIndex
- *         description: 查询开始页索引
- *         in: query
- *         required: false
- *         type: integer
- *       - name: size
- *         description: 图书字数
- *         in: query
- *         required: false
- *         type: integer
  *     responses:
  *       200:
  *         description: 成功搜索到书籍
@@ -331,7 +261,7 @@ BookApi.get('/recommends', async (ctx, next) => {
  *         
  */
 BookApi.get('/', async (ctx, next) => {
-  const { data, err } = await QidianClient.searchBooks(ctx.query);
+  const { data, err } = await ZhuishuClient.searchBooks(ctx.query);
 
   if (err) {
     ctx.status = 400;
@@ -347,7 +277,7 @@ BookApi.get('/', async (ctx, next) => {
 
 /**
  * @swagger
- * /api/v1/books/{bookId}:
+ * /api/v2/books/{bookId}:
  *   parameters:
  *     - name: bookId
  *       description: 书本编号
@@ -359,12 +289,6 @@ BookApi.get('/', async (ctx, next) => {
  *     description: 图书详情接口
  *     produces:
  *       - application/json
- *     parameters:
- *       - name: iosDeviceType
- *         description: 是否IOS设备
- *         in: query
- *         required: false
- *         type: integer
  *     responses:
  *       200:
  *         description: 成功获取书籍详情
@@ -376,9 +300,8 @@ BookApi.get('/', async (ctx, next) => {
  *           $ref: '#/definitions/BAD404'      
  */
 BookApi.get('/:bookId', async (ctx, next) => {
-  const { data, err } = await QidianClient.bookInfo({
+  const { data, err } = await ZhuishuClient.bookInfo({
     bookId: ctx.params.bookId,
-    iosDeviceType: ctx.query.iosDeviceType,
   });
 
   if (err) {
@@ -395,7 +318,7 @@ BookApi.get('/:bookId', async (ctx, next) => {
 
 /**
  * @swagger
- * /api/v1/books/{bookId}/chapters/newest:
+ * /api/v2/books/{bookId}/chapters/newest:
  *   parameters:
  *     - name: bookId
  *       description: 书本编号
@@ -408,11 +331,6 @@ BookApi.get('/:bookId', async (ctx, next) => {
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: iosDeviceType
- *         description: 是否IOS设备
- *         in: query
- *         required: false
- *         type: integer
  *     responses:
  *       200:
  *         description: 成功获取书籍详情
@@ -425,9 +343,8 @@ BookApi.get('/:bookId', async (ctx, next) => {
  */
 BookApi.get('/:bookId/chapters/newest', async (ctx, next) => {
   // 通过起点获取最新章节
-  const { data, err } = await QidianClient.chapters({
-    bookId: ctx.params.bookId,
-    pageIndex: ctx.query.pageIndex,
+  const { data, err } = await ZhuishuClient.newestChapter({
+    bookIds: [ctx.params.bookId],
   });
 
   if (err) {
@@ -439,12 +356,12 @@ BookApi.get('/:bookId/chapters/newest', async (ctx, next) => {
   }
 
   ctx.status = 200;
-  ctx.body = data;
+  ctx.body = data[ctx.params.bookId];
 });
 
 /**
  * @swagger
- * /api/v1/books/{source}/{bookId}/chapters:
+ * /api/v2/books/{bookId}/chapters:
  *   parameters:
  *     - name: source
  *       description: 源站编号
@@ -483,27 +400,47 @@ BookApi.get('/:bookId/chapters/newest', async (ctx, next) => {
  *         schema:
  *           $ref: '#/definitions/BAD404'
  */
-BookApi.get('/:source/:bookId/chapters', async (ctx, next) => {
-  // 通过源站获取章节
-  try {
-    const chapters = await parserFactory(ctx.params.source).findChapters({ bookId: ctx.params.bookId });
+BookApi.get('/:bookId/chapters', async (ctx, next) => {
+  const { data, err } = await ZhuishuClient.chapters({
+    bookId: ctx.params.bookId,
+  });
 
-    ctx.status = 200;
-    ctx.body = chapters.map(chapter => ({
-      chapterId: chapter.chapterId,
-      title: chapter.title,
-    }));
-  } catch (err) {
+  if (err) {
     ctx.status = 400;
     ctx.body = {
       msg: err,
     };
+    return;
   }
+
+  ctx.status = 200;
+  ctx.body = data;
 });
 
 /**
  * @swagger
- * /api/v1/books/{source}/{bookId}/{chapterId}:
+ * /api/v2/books/{sourceId}/chapters:
+ */
+BookApi.get('/:sourceId/chapters', async (ctx, next) => {
+  const { data, err } = await ZhuishuClient.chaptersBySource({
+    sourceId: ctx.params.sourceId,
+  });
+
+  if (err) {
+    ctx.status = 400;
+    ctx.body = {
+      msg: err,
+    };
+    return;
+  }
+
+  ctx.status = 200;
+  ctx.body = data;
+});
+
+/**
+ * @swagger
+ * /api/v2/books/chapter/{link}:
  *   parameters:
  *     - name: source
  *       description: 源站编号
@@ -546,25 +483,26 @@ BookApi.get('/:source/:bookId/chapters', async (ctx, next) => {
  *         schema:
  *           $ref: '#/definitions/BAD404'
  */
-BookApi.get('/:source/:bookId/:chapterId', async (ctx, next) => {
-  try {
-    const chapter = await parserFactory(ctx.params.source).syncContent({ bookId: ctx.params.bookId, chapterId: ctx.params.chapterId });
+BookApi.get('/chapter/:link', async (ctx, next) => {
+  const { data, err } = await ZhuishuClient.content({
+    link: ctx.params.link,
+  });
 
-    ctx.status = 200;
-    ctx.body = {
-      ...chapter,
-    };
-  } catch (err) {
+  if (err) {
     ctx.status = 400;
     ctx.body = {
       msg: err,
     };
+    return;
   }
+
+  ctx.status = 200;
+  ctx.body = data;
 });
 
 /**
  * @swagger
- * /api/v1/books/{bookId}/comments:
+ * /api/v2/books/{bookId}/comments:
  *   parameters:
  *     - name: bookId
  *       description: 书本编号
@@ -595,7 +533,7 @@ BookApi.get('/:source/:bookId/:chapterId', async (ctx, next) => {
  *           $ref: '#/definitions/BAD404'
  */
 BookApi.get('/:bookId/comments', async (ctx, next) => {
-  const { data, err } = await QidianClient.comments({
+  const { data, err } = await ZhuishuClient.comments({
     bookId: ctx.params.bookId,
     pageIndex: ctx.query.pageIndex,
   });
@@ -612,26 +550,5 @@ BookApi.get('/:bookId/comments', async (ctx, next) => {
   ctx.body = data;
 });
 
-// /**
-//  * 开启解析
-//  */
-// BookApi.get('/:source/:bookId/sync', async (ctx, next) => {
-//   const result = await parserFactory(ctx.params.source).start({ bookId: ctx.params.bookId });
-
-//   if (!result) {
-//     ctx.status = 400;
-//     ctx.body = {
-//       msg: `同步书本${ctx.params.bookId}失败`,
-//     };
-//     return;
-//   }
-
-//   ctx.status = 200;
-//   ctx.body = {
-//     msg: `同步书本${ctx.params.bookId}成功`,
-//   };
-// });
-
 export default BookApi;
-
 
