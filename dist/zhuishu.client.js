@@ -1,4 +1,4 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _regenerator = require('babel-runtime/regenerator');var _regenerator2 = _interopRequireDefault(_regenerator);var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _regenerator = require('babel-runtime/regenerator');var _regenerator2 = _interopRequireDefault(_regenerator);var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);var _extends2 = require('babel-runtime/helpers/extends');var _extends3 = _interopRequireDefault(_extends2);
 
 
 
@@ -22,6 +22,13 @@ var processZhuishuResp = function processZhuishuResp(data) {var filter = argumen
   }
 
   return filter(data);
+};
+
+var wrapBookInfo = function wrapBookInfo(data) {
+  return (0, _extends3.default)({},
+  data, {
+    cover: _config.config.v2_urls.statics() + data.cover });
+
 };
 
 var Zhuishu = {
@@ -71,7 +78,7 @@ var Zhuishu = {
               { err: err });case 9:return _context4.abrupt('return',
 
 
-              processZhuishuResp(data, function (data) {return { data: data.books };}));case 10:case 'end':return _context4.stop();}}}, _callee4, _this4);}))();
+              processZhuishuResp(data, function (data) {return { data: data.books.map(function (book) {return wrapBookInfo(book);}) };}));case 10:case 'end':return _context4.stop();}}}, _callee4, _this4);}))();
   },
   ranks: function ranks() {var _this5 = this;return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {var _ref4, data, err;return _regenerator2.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
                 rest.GET(_config.config.v2_urls.ranks()));case 2:_ref4 = _context5.sent;data = _ref4.data;err = _ref4.err;if (!
@@ -90,7 +97,7 @@ var Zhuishu = {
               { err: err });case 8:return _context6.abrupt('return',
 
 
-              processZhuishuResp(data, function (data) {return { data: data.ranking };}));case 9:case 'end':return _context6.stop();}}}, _callee6, _this6);}))();
+              processZhuishuResp(data, function (data) {return { data: data.ranking.map(function (book) {return wrapBookInfo(book);}) };}));case 9:case 'end':return _context6.stop();}}}, _callee6, _this6);}))();
   },
   searchBooks: function searchBooks() {var _this7 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {var _params$key, key, _ref6, data, err;return _regenerator2.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_params$key =
               params.key, key = _params$key === undefined ? '' : _params$key;_context7.next = 3;return (
@@ -101,7 +108,7 @@ var Zhuishu = {
               { err: err });case 8:return _context7.abrupt('return',
 
 
-              processZhuishuResp(data, function (data) {return { data: data.books };}));case 9:case 'end':return _context7.stop();}}}, _callee7, _this7);}))();
+              processZhuishuResp(data, function (data) {return { data: data.books.map(function (book) {return wrapBookInfo(book);}) };}));case 9:case 'end':return _context7.stop();}}}, _callee7, _this7);}))();
   },
   bookInfo: function bookInfo() {var _this8 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8() {var bookId, _ref7, data, err;return _regenerator2.default.wrap(function _callee8$(_context8) {while (1) {switch (_context8.prev = _context8.next) {case 0:
               bookId = params.bookId;_context8.next = 3;return (
@@ -112,7 +119,7 @@ var Zhuishu = {
               { err: err });case 8:return _context8.abrupt('return',
 
 
-              processZhuishuResp(data));case 9:case 'end':return _context8.stop();}}}, _callee8, _this8);}))();
+              processZhuishuResp(data, function (data) {return { data: wrapBookInfo(data) };}));case 9:case 'end':return _context8.stop();}}}, _callee8, _this8);}))();
   },
   newestChapter: function newestChapter() {var _this9 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {var bookIds, _ref8, data, err;return _regenerator2.default.wrap(function _callee9$(_context9) {while (1) {switch (_context9.prev = _context9.next) {case 0:
               bookIds = params.bookIds;_context9.next = 3;return (

@@ -24,6 +24,13 @@ const processZhuishuResp = (data, filter = (data) => ({ data })) => {
   return filter(data);
 };
 
+const wrapBookInfo = data => {
+  return {
+    ...data,
+    cover: config.v2_urls.statics() + data.cover,
+  };
+};
+
 const Zhuishu = {
   async recommends(params = {}) {
     const { gender, major, minor, start = 0, limit = 20 } = params;
@@ -71,7 +78,7 @@ const Zhuishu = {
       return { err };
     }
 
-    return processZhuishuResp(data, data => ({ data: data.books }));
+    return processZhuishuResp(data, data => ({ data: data.books.map(book => wrapBookInfo(book)) }));
   },
   async ranks() {
     const { data, err } = await rest.GET(config.v2_urls.ranks());
@@ -90,7 +97,7 @@ const Zhuishu = {
       return { err };
     }
 
-    return processZhuishuResp(data, data => ({ data: data.ranking }));
+    return processZhuishuResp(data, data => ({ data: data.ranking.map(book => wrapBookInfo(book)) }));
   },
   async searchBooks(params = {}) {
     const { key = '' } = params;
@@ -101,7 +108,7 @@ const Zhuishu = {
       return { err };
     }
 
-    return processZhuishuResp(data, data => ({ data: data.books }));
+    return processZhuishuResp(data, data => ({ data: data.books.map(book => wrapBookInfo(book)) }));
   },
   async bookInfo(params = {}) {
     const { bookId } = params;
@@ -112,7 +119,7 @@ const Zhuishu = {
       return { err };
     }
 
-    return processZhuishuResp(data);
+    return processZhuishuResp(data, data => ({ data: wrapBookInfo(data) }));
   },
   async newestChapter(params = {}) {
     const { bookIds } = params;

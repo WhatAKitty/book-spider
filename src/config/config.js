@@ -3,6 +3,7 @@ const zhuishuHost = {
   main: 'http://api.zhuishushenqi.com',
   second: 'http://api05iye5.zhuishushenqi.com',
   chapter: 'http://chapterup.zhuishushenqi.com/chapter',
+  statics: 'https://statics.zhuishushenqi.com',
 };
 
 export default {
@@ -25,6 +26,7 @@ export default {
     newestChapter: (bookIds = []) => `${zhuishuHost.second}/book?view=updated&id=${bookIds.join(',')}`,
     chapters: (bookId) => `${zhuishuHost.main}/mix-atoc/${bookId}?view=chapters`,
     chaptersBySource: (sourceId) => `${zhuishuHost.main}/atoc/${sourceId}?view=chapters`,
-    content: (link) => `${zhuishuHost.chapter}/${link}`
+    content: (link) => `${zhuishuHost.chapter}/${link}`,
+    statics: () => `${zhuishuHost.statics}`,
   },
 };

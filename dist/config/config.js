@@ -2,7 +2,8 @@
 var zhuishuHost = {
   main: 'http://api.zhuishushenqi.com',
   second: 'http://api05iye5.zhuishushenqi.com',
-  chapter: 'http://chapterup.zhuishushenqi.com/chapter' };exports.default =
+  chapter: 'http://chapterup.zhuishushenqi.com/chapter',
+  statics: 'https://statics.zhuishushenqi.com' };exports.default =
 
 
 {
@@ -25,5 +26,6 @@ var zhuishuHost = {
     newestChapter: function newestChapter() {var bookIds = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];return zhuishuHost.second + '/book?view=updated&id=' + bookIds.join(',');},
     chapters: function chapters(bookId) {return zhuishuHost.main + '/mix-atoc/' + bookId + '?view=chapters';},
     chaptersBySource: function chaptersBySource(sourceId) {return zhuishuHost.main + '/atoc/' + sourceId + '?view=chapters';},
-    content: function content(link) {return zhuishuHost.chapter + '/' + link;} } };
+    content: function content(link) {return zhuishuHost.chapter + '/' + link;},
+    statics: function statics() {return '' + zhuishuHost.statics;} } };
 //# sourceMappingURL=config.js.map
