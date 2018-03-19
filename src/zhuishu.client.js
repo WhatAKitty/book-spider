@@ -99,6 +99,17 @@ const Zhuishu = {
 
     return processZhuishuResp(data, data => ({ data: data.ranking.map(book => wrapBookInfo(book)) }));
   },
+  async authorBooks(params = {}) {
+    const { author = '' } = params;
+    const { data, err } = await rest.GET(config.v2_urls.authorBooks(author));
+
+    if (err) {
+      // 返回错误
+      return { err };
+    }
+
+    return processZhuishuResp(data, data => ({ data: data.books.map(book => wrapBookInfo(book)) }));
+  },
   async searchBooks(params = {}) {
     const { key = '' } = params;
     const { data, err } = await rest.GET(config.v2_urls.search(key));
@@ -119,7 +130,16 @@ const Zhuishu = {
       return { err };
     }
 
-    return processZhuishuResp(data, data => ({ data: wrapBookInfo(data) }));
+    const { data: authorBooks, err: booksErr } = await this.authorBooks({ author: data.author });
+
+    if (booksErr) {
+      return { err: booksErr };
+    }
+
+    return processZhuishuResp(data, data => ({ data: {
+      ...wrapBookInfo(data),
+      authorBooks: authorBooks.filter(authorBook => authorBook._id !== data._id),
+    } }));
   },
   async newestChapter(params = {}) {
     const { bookIds } = params;

@@ -99,9 +99,9 @@ var Zhuishu = {
 
               processZhuishuResp(data, function (data) {return { data: data.ranking.map(function (book) {return wrapBookInfo(book);}) };}));case 9:case 'end':return _context6.stop();}}}, _callee6, _this6);}))();
   },
-  searchBooks: function searchBooks() {var _this7 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {var _params$key, key, _ref6, data, err;return _regenerator2.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_params$key =
-              params.key, key = _params$key === undefined ? '' : _params$key;_context7.next = 3;return (
-                rest.GET(_config.config.v2_urls.search(key)));case 3:_ref6 = _context7.sent;data = _ref6.data;err = _ref6.err;if (!
+  authorBooks: function authorBooks() {var _this7 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {var _params$author, author, _ref6, data, err;return _regenerator2.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_params$author =
+              params.author, author = _params$author === undefined ? '' : _params$author;_context7.next = 3;return (
+                rest.GET(_config.config.v2_urls.authorBooks(author)));case 3:_ref6 = _context7.sent;data = _ref6.data;err = _ref6.err;if (!
 
               err) {_context7.next = 8;break;}return _context7.abrupt('return',
 
@@ -110,68 +110,88 @@ var Zhuishu = {
 
               processZhuishuResp(data, function (data) {return { data: data.books.map(function (book) {return wrapBookInfo(book);}) };}));case 9:case 'end':return _context7.stop();}}}, _callee7, _this7);}))();
   },
-  bookInfo: function bookInfo() {var _this8 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8() {var bookId, _ref7, data, err;return _regenerator2.default.wrap(function _callee8$(_context8) {while (1) {switch (_context8.prev = _context8.next) {case 0:
-              bookId = params.bookId;_context8.next = 3;return (
-                rest.GET(_config.config.v2_urls.info(bookId)));case 3:_ref7 = _context8.sent;data = _ref7.data;err = _ref7.err;if (!
+  searchBooks: function searchBooks() {var _this8 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee8() {var _params$key, key, _ref7, data, err;return _regenerator2.default.wrap(function _callee8$(_context8) {while (1) {switch (_context8.prev = _context8.next) {case 0:_params$key =
+              params.key, key = _params$key === undefined ? '' : _params$key;_context8.next = 3;return (
+                rest.GET(_config.config.v2_urls.search(key)));case 3:_ref7 = _context8.sent;data = _ref7.data;err = _ref7.err;if (!
 
               err) {_context8.next = 8;break;}return _context8.abrupt('return',
 
               { err: err });case 8:return _context8.abrupt('return',
 
 
-              processZhuishuResp(data, function (data) {return { data: wrapBookInfo(data) };}));case 9:case 'end':return _context8.stop();}}}, _callee8, _this8);}))();
+              processZhuishuResp(data, function (data) {return { data: data.books.map(function (book) {return wrapBookInfo(book);}) };}));case 9:case 'end':return _context8.stop();}}}, _callee8, _this8);}))();
   },
-  newestChapter: function newestChapter() {var _this9 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {var bookIds, _ref8, data, err;return _regenerator2.default.wrap(function _callee9$(_context9) {while (1) {switch (_context9.prev = _context9.next) {case 0:
-              bookIds = params.bookIds;_context9.next = 3;return (
-                rest.GET(_config.config.v2_urls.newestChapter(bookIds)));case 3:_ref8 = _context9.sent;data = _ref8.data;err = _ref8.err;if (!
+  bookInfo: function bookInfo() {var _this9 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee9() {var bookId, _ref8, data, err, _ref9, authorBooks, booksErr;return _regenerator2.default.wrap(function _callee9$(_context9) {while (1) {switch (_context9.prev = _context9.next) {case 0:
+              bookId = params.bookId;_context9.next = 3;return (
+                rest.GET(_config.config.v2_urls.info(bookId)));case 3:_ref8 = _context9.sent;data = _ref8.data;err = _ref8.err;if (!
 
               err) {_context9.next = 8;break;}return _context9.abrupt('return',
 
-              { err: err });case 8:return _context9.abrupt('return',
+              { err: err });case 8:_context9.next = 10;return (
 
 
-              processZhuishuResp(data, function (data) {return {
-                  data: data.reduce(function (all, book) {
-                    all[book._id] = book;
-                    return all;
-                  }, {}) };}));case 9:case 'end':return _context9.stop();}}}, _callee9, _this9);}))();
+                _this9.authorBooks({ author: data.author }));case 10:_ref9 = _context9.sent;authorBooks = _ref9.data;booksErr = _ref9.err;if (!
+
+              booksErr) {_context9.next = 15;break;}return _context9.abrupt('return',
+              { err: booksErr });case 15:return _context9.abrupt('return',
+
+
+              processZhuishuResp(data, function (data) {return { data: (0, _extends3.default)({},
+                  wrapBookInfo(data), {
+                    authorBooks: authorBooks.filter(function (authorBook) {return authorBook._id !== data._id;}) }) };}));case 16:case 'end':return _context9.stop();}}}, _callee9, _this9);}))();
 
   },
-  chapters: function chapters() {var _this10 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {var bookId, _ref9, data, err;return _regenerator2.default.wrap(function _callee10$(_context10) {while (1) {switch (_context10.prev = _context10.next) {case 0:
-              bookId = params.bookId;_context10.next = 3;return (
-                rest.GET(_config.config.v2_urls.chapters(bookId)));case 3:_ref9 = _context10.sent;data = _ref9.data;err = _ref9.err;if (!
+  newestChapter: function newestChapter() {var _this10 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee10() {var bookIds, _ref10, data, err;return _regenerator2.default.wrap(function _callee10$(_context10) {while (1) {switch (_context10.prev = _context10.next) {case 0:
+              bookIds = params.bookIds;_context10.next = 3;return (
+                rest.GET(_config.config.v2_urls.newestChapter(bookIds)));case 3:_ref10 = _context10.sent;data = _ref10.data;err = _ref10.err;if (!
 
               err) {_context10.next = 8;break;}return _context10.abrupt('return',
 
               { err: err });case 8:return _context10.abrupt('return',
 
 
-              processZhuishuResp(data, function (data) {return { data: data.mixToc.chapters };}));case 9:case 'end':return _context10.stop();}}}, _callee10, _this10);}))();
+              processZhuishuResp(data, function (data) {return {
+                  data: data.reduce(function (all, book) {
+                    all[book._id] = book;
+                    return all;
+                  }, {}) };}));case 9:case 'end':return _context10.stop();}}}, _callee10, _this10);}))();
+
   },
-  chaptersBySource: function chaptersBySource() {var _this11 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11() {var sourceId, _ref10, data, err;return _regenerator2.default.wrap(function _callee11$(_context11) {while (1) {switch (_context11.prev = _context11.next) {case 0:
-              sourceId = params.sourceId;_context11.next = 3;return (
-                rest.GET(_config.config.v2_urls.chaptersBySource(sourceId)));case 3:_ref10 = _context11.sent;data = _ref10.data;err = _ref10.err;if (!
+  chapters: function chapters() {var _this11 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee11() {var bookId, _ref11, data, err;return _regenerator2.default.wrap(function _callee11$(_context11) {while (1) {switch (_context11.prev = _context11.next) {case 0:
+              bookId = params.bookId;_context11.next = 3;return (
+                rest.GET(_config.config.v2_urls.chapters(bookId)));case 3:_ref11 = _context11.sent;data = _ref11.data;err = _ref11.err;if (!
 
               err) {_context11.next = 8;break;}return _context11.abrupt('return',
 
               { err: err });case 8:return _context11.abrupt('return',
 
 
-              processZhuishuResp(data, function (data) {return { data: data.chapters };}));case 9:case 'end':return _context11.stop();}}}, _callee11, _this11);}))();
+              processZhuishuResp(data, function (data) {return { data: data.mixToc.chapters };}));case 9:case 'end':return _context11.stop();}}}, _callee11, _this11);}))();
   },
-  content: function content() {var _this12 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12() {var link, _ref11, data, err;return _regenerator2.default.wrap(function _callee12$(_context12) {while (1) {switch (_context12.prev = _context12.next) {case 0:
-              link = params.link;_context12.next = 3;return (
-                rest.GET(_config.config.v2_urls.content(link)));case 3:_ref11 = _context12.sent;data = _ref11.data;err = _ref11.err;if (!
+  chaptersBySource: function chaptersBySource() {var _this12 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee12() {var sourceId, _ref12, data, err;return _regenerator2.default.wrap(function _callee12$(_context12) {while (1) {switch (_context12.prev = _context12.next) {case 0:
+              sourceId = params.sourceId;_context12.next = 3;return (
+                rest.GET(_config.config.v2_urls.chaptersBySource(sourceId)));case 3:_ref12 = _context12.sent;data = _ref12.data;err = _ref12.err;if (!
 
               err) {_context12.next = 8;break;}return _context12.abrupt('return',
 
               { err: err });case 8:return _context12.abrupt('return',
 
 
-              processZhuishuResp(data, function (data) {return { data: data.chapter };}));case 9:case 'end':return _context12.stop();}}}, _callee12, _this12);}))();
+              processZhuishuResp(data, function (data) {return { data: data.chapters };}));case 9:case 'end':return _context12.stop();}}}, _callee12, _this12);}))();
   },
-  comments: function comments() {var _this13 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13() {return _regenerator2.default.wrap(function _callee13$(_context13) {while (1) {switch (_context13.prev = _context13.next) {case 0:return _context13.abrupt('return',
-              { err: '暂时不支持' });case 1:case 'end':return _context13.stop();}}}, _callee13, _this13);}))();
+  content: function content() {var _this13 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee13() {var link, _ref13, data, err;return _regenerator2.default.wrap(function _callee13$(_context13) {while (1) {switch (_context13.prev = _context13.next) {case 0:
+              link = params.link;_context13.next = 3;return (
+                rest.GET(_config.config.v2_urls.content(link)));case 3:_ref13 = _context13.sent;data = _ref13.data;err = _ref13.err;if (!
+
+              err) {_context13.next = 8;break;}return _context13.abrupt('return',
+
+              { err: err });case 8:return _context13.abrupt('return',
+
+
+              processZhuishuResp(data, function (data) {return { data: data.chapter };}));case 9:case 'end':return _context13.stop();}}}, _callee13, _this13);}))();
+  },
+  comments: function comments() {var _this14 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee14() {return _regenerator2.default.wrap(function _callee14$(_context14) {while (1) {switch (_context14.prev = _context14.next) {case 0:return _context14.abrupt('return',
+              { err: '暂时不支持' });case 1:case 'end':return _context14.stop();}}}, _callee14, _this14);}))();
   } };exports.default =
 
 

@@ -20,6 +20,7 @@ export default {
     catBooks: () => `${zhuishuHost.main}/book/by-categories`,
     ranks: () => `${zhuishuHost.main}/ranking/gender`,
     rankBooks: (rankId) => `${zhuishuHost.main}/ranking/${rankId}`,
+    authorBooks: (author) => `${zhuishuHost.main}/book/accurate-search?author=${encodeURI(author)}&packageName=com.ifmoc.ZhuiShuShenQi`,
     search: (query) => `${zhuishuHost.main}/book/fuzzy-search?query=${encodeURI(query)}`,
     info: (bookId) => `${zhuishuHost.main}/book/${bookId}`,
     sources: (bookId) => `${zhuishuHost.main}/atoc?view=summary&book=${bookId}`,

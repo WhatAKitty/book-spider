@@ -20,6 +20,7 @@ var zhuishuHost = {
     catBooks: function catBooks() {return zhuishuHost.main + '/book/by-categories';},
     ranks: function ranks() {return zhuishuHost.main + '/ranking/gender';},
     rankBooks: function rankBooks(rankId) {return zhuishuHost.main + '/ranking/' + rankId;},
+    authorBooks: function authorBooks(author) {return zhuishuHost.main + '/book/accurate-search?author=' + encodeURI(author) + '&packageName=com.ifmoc.ZhuiShuShenQi';},
     search: function search(query) {return zhuishuHost.main + '/book/fuzzy-search?query=' + encodeURI(query);},
     info: function info(bookId) {return zhuishuHost.main + '/book/' + bookId;},
     sources: function sources(bookId) {return zhuishuHost.main + '/atoc?view=summary&book=' + bookId;},
