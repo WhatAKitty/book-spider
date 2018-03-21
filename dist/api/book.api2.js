@@ -420,6 +420,10 @@ BookApi.get('/:bookId/chapters', function () {var _ref9 = (0, _asyncToGenerator3
 /**
                                                                                                                                                                                * @swagger
                                                                                                                                                                                * /api/v2/books/{sourceId}/chapters:
+                                                                                                                                                                               *   get:
+                                                                                                                                                                               *     description: 某个小说源的章节内容
+                                                                                                                                                                               *     produces:
+                                                                                                                                                                               *       - application/json
                                                                                                                                                                                */
 BookApi.get('/:sourceId/chapters', function () {var _ref11 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(ctx, next) {var _ref12, data, err;return _regenerator2.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:_context6.next = 2;return (
               _zhuishu2.default.chaptersBySource({

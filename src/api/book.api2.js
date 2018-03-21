@@ -420,6 +420,10 @@ BookApi.get('/:bookId/chapters', async (ctx, next) => {
 /**
  * @swagger
  * /api/v2/books/{sourceId}/chapters:
+ *   get:
+ *     description: 某个小说源的章节内容
+ *     produces:
+ *       - application/json
  */
 BookApi.get('/:sourceId/chapters', async (ctx, next) => {
   const { data, err } = await ZhuishuClient.chaptersBySource({

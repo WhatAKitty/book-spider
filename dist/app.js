@@ -10,6 +10,7 @@ var _path = require('path');var _path2 = _interopRequireDefault(_path);
 
 var _book = require('./api/book.api');var _book2 = _interopRequireDefault(_book);
 var _book3 = require('./api/book.api2');var _book4 = _interopRequireDefault(_book3);
+var _rank = require('./api/rank.api2');var _rank2 = _interopRequireDefault(_rank);
 var _swagger = require('./api/swagger.api');var _swagger2 = _interopRequireDefault(_swagger);
 var _db = require('./db');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
@@ -18,6 +19,7 @@ var router = new _koaRouter2.default();
 
 router.use(_book2.default.routes(), _book2.default.allowedMethods());
 router.use(_book4.default.routes(), _book4.default.allowedMethods());
+router.use(_rank2.default.routes(), _rank2.default.allowedMethods());
 router.use(_swagger2.default.routes(), _swagger2.default.allowedMethods());
 
 app.

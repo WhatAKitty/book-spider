@@ -31,6 +31,13 @@ const wrapBookInfo = data => {
   };
 };
 
+const wrapRankInfo = data => {
+  return {
+    ...data,
+    cover: config.v2_urls.statics() + data.cover,
+  };
+};
+
 const Zhuishu = {
   async recommends(params = {}) {
     const { gender, major, minor, start = 0, limit = 20 } = params;
@@ -87,7 +94,19 @@ const Zhuishu = {
       return { err };
     }
 
-    return processZhuishuResp(data);
+    return processZhuishuResp(data, data => ({
+      data: Object
+        .keys(data)
+        .reduce((res, key) => {
+          const val = data[key];
+          if (val instanceof Array) {
+            res[key] = val.map(item => wrapRankInfo(item));
+          } else {
+            res[key] = val;
+          }
+          return res;
+        }, {})
+    }));
   },
   async rankBooks(params = {}) {
     const { rankId } = params;
@@ -97,7 +116,17 @@ const Zhuishu = {
       return { err };
     }
 
-    return processZhuishuResp(data, data => ({ data: data.ranking.map(book => wrapBookInfo(book)) }));
+    return processZhuishuResp(data, data => ({
+      data: {
+        ...data,
+        ranking: {
+          ...data.ranking,
+          cover: config.v2_urls.statics() + data.ranking.cover,
+          icon: config.v2_urls.statics() + data.ranking.icon,
+          books: data.ranking.books.map(book => wrapBookInfo(book)),
+        },
+      }
+    }));
   },
   async authorBooks(params = {}) {
     const { author = '' } = params;
@@ -136,10 +165,12 @@ const Zhuishu = {
       return { err: booksErr };
     }
 
-    return processZhuishuResp(data, data => ({ data: {
-      ...wrapBookInfo(data),
-      authorBooks: authorBooks.filter(authorBook => authorBook._id !== data._id),
-    } }));
+    return processZhuishuResp(data, data => ({
+      data: {
+        ...wrapBookInfo(data),
+        authorBooks: authorBooks.filter(authorBook => authorBook._id !== data._id),
+      }
+    }));
   },
   async newestChapter(params = {}) {
     const { bookIds } = params;

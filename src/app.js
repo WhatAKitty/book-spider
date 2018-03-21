@@ -10,6 +10,7 @@ import path from 'path';
 
 import BookApi from './api/book.api';
 import BookApiV2 from './api/book.api2';
+import RankApiV2 from './api/rank.api2';
 import SwaggerApi from './api/swagger.api';
 import { init } from './db';
 
@@ -18,6 +19,7 @@ const router = new Router();
 
 router.use(BookApi.routes(), BookApi.allowedMethods());
 router.use(BookApiV2.routes(), BookApiV2.allowedMethods());
+router.use(RankApiV2.routes(), RankApiV2.allowedMethods());
 router.use(SwaggerApi.routes(), SwaggerApi.allowedMethods());
 
 app
