@@ -489,7 +489,7 @@ BookApi.get('/:sourceId/chapters', function () {var _ref11 = (0, _asyncToGenerat
                                                                                                                                                                                  */
 BookApi.get('/chapter/:link', function () {var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(ctx, next) {var _ref14, data, err;return _regenerator2.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_context7.next = 2;return (
               _zhuishu2.default.content({
-                link: ctx.params.link }));case 2:_ref14 = _context7.sent;data = _ref14.data;err = _ref14.err;if (!
+                link: encodeURIComponent(ctx.params.link) }));case 2:_ref14 = _context7.sent;data = _ref14.data;err = _ref14.err;if (!
 
 
             err) {_context7.next = 9;break;}

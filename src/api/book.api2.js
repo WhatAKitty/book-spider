@@ -489,7 +489,7 @@ BookApi.get('/:sourceId/chapters', async (ctx, next) => {
  */
 BookApi.get('/chapter/:link', async (ctx, next) => {
   const { data, err } = await ZhuishuClient.content({
-    link: ctx.params.link,
+    link: encodeURIComponent(ctx.params.link),
   });
 
   if (err) {
