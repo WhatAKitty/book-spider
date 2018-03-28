@@ -487,21 +487,24 @@ BookApi.get('/:sourceId/chapters', function () {var _ref11 = (0, _asyncToGenerat
                                                                                                                                                                                  *         schema:
                                                                                                                                                                                  *           $ref: '#/definitions/BAD404'
                                                                                                                                                                                  */
-BookApi.get('/chapter/:link', function () {var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(ctx, next) {var _ref14, data, err;return _regenerator2.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_context7.next = 2;return (
+BookApi.get('/chapter/:link', function () {var _ref13 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7(ctx, next) {var raw, parsed, _ref14, data, err;return _regenerator2.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:
+            raw = ctx.params.link;
+            parsed = new Buffer(raw.replace('xiegang', '/'), 'base64').toString();
+            console.log(parsed);_context7.next = 5;return (
               _zhuishu2.default.content({
-                link: encodeURIComponent(ctx.params.link) }));case 2:_ref14 = _context7.sent;data = _ref14.data;err = _ref14.err;if (!
+                link: encodeURIComponent(parsed) }));case 5:_ref14 = _context7.sent;data = _ref14.data;err = _ref14.err;if (!
 
 
-            err) {_context7.next = 9;break;}
+            err) {_context7.next = 12;break;}
             ctx.status = 400;
             ctx.body = {
-              msg: err };return _context7.abrupt('return');case 9:
+              msg: err };return _context7.abrupt('return');case 12:
 
 
 
 
             ctx.status = 200;
-            ctx.body = data;case 11:case 'end':return _context7.stop();}}}, _callee7, undefined);}));return function (_x13, _x14) {return _ref13.apply(this, arguments);};}());
+            ctx.body = data;case 14:case 'end':return _context7.stop();}}}, _callee7, undefined);}));return function (_x13, _x14) {return _ref13.apply(this, arguments);};}());
 
 
 /**

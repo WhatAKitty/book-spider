@@ -488,8 +488,10 @@ BookApi.get('/:sourceId/chapters', async (ctx, next) => {
  *           $ref: '#/definitions/BAD404'
  */
 BookApi.get('/chapter/:link', async (ctx, next) => {
+  const raw = ctx.params.link;
+  const parsed = new Buffer(raw.replace('xiegang', '/'), 'base64').toString();
   const { data, err } = await ZhuishuClient.content({
-    link: encodeURIComponent(ctx.params.link),
+    link: encodeURIComponent(parsed),
   });
 
   if (err) {
