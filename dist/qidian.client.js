@@ -79,38 +79,28 @@ var Qidian = {
 
               { data: data.Data });case 11:case 'end':return _context2.stop();}}}, _callee2, _this2);}))();
   },
-  bookInfo: function bookInfo() {var _this3 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {var bookId, _params$iosDeviceType, iosDeviceType, _ref4, data, err;return _regenerator2.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-              bookId = params.bookId, _params$iosDeviceType = params.iosDeviceType, iosDeviceType = _params$iosDeviceType === undefined ? 0 : _params$iosDeviceType;_context3.next = 3;return (
+  bookInfoHtml: function bookInfoHtml() {var _this3 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {var bookId, anotherRest, _ref4, data, err;return _regenerator2.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+              bookId = params.bookId;
+              anotherRest = new _reactRestKit2.default({
+                contentType: 'application/json',
+                dataType: 'text' });_context3.next = 4;return (
+
+                anotherRest.GET('https://book.qidian.com/info/' + bookId));case 4:_ref4 = _context3.sent;data = _ref4.data;err = _ref4.err;if (!
+
+              err) {_context3.next = 9;break;}return _context3.abrupt('return',
+
+              { err: err });case 9:return _context3.abrupt('return',
+
+
+              { data: data });case 10:case 'end':return _context3.stop();}}}, _callee3, _this3);}))();
+  },
+  bookInfo: function bookInfo() {var _this4 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {var bookId, _params$iosDeviceType, iosDeviceType, _ref5, data, err;return _regenerator2.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+              bookId = params.bookId, _params$iosDeviceType = params.iosDeviceType, iosDeviceType = _params$iosDeviceType === undefined ? 0 : _params$iosDeviceType;_context4.next = 3;return (
                 rest.GET(_config.config.urls.info, {
                   BookId: bookId,
                   iosDeviceType: iosDeviceType,
                   isOutBook: 0,
                   preview: 0 },
-                {
-                  headers: {
-                    'qdheader': qdheader } }));case 3:_ref4 = _context3.sent;data = _ref4.data;err = _ref4.err;if (!
-
-
-
-              err) {_context3.next = 8;break;}return _context3.abrupt('return',
-
-              { err: err });case 8:if (!(
-
-
-              data.Result !== 0)) {_context3.next = 10;break;}return _context3.abrupt('return',
-
-              { err: data.Message });case 10:return _context3.abrupt('return',
-
-
-              { data: data.Data });case 11:case 'end':return _context3.stop();}}}, _callee3, _this3);}))();
-  },
-  chapters: function chapters() {var _this4 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {var bookId, _params$pageIndex2, pageIndex, _ref5, data, err;return _regenerator2.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
-              bookId = params.bookId, _params$pageIndex2 = params.pageIndex, pageIndex = _params$pageIndex2 === undefined ? -1 : _params$pageIndex2;_context4.next = 3;return (
-                rest.GET(_config.config.urls.chapters, {
-                  bookId: bookId,
-                  pageIndex: pageIndex,
-                  requestSource: 0,
-                  timeStamp: 0 },
                 {
                   headers: {
                     'qdheader': qdheader } }));case 3:_ref5 = _context4.sent;data = _ref5.data;err = _ref5.err;if (!
@@ -129,12 +119,13 @@ var Qidian = {
 
               { data: data.Data });case 11:case 'end':return _context4.stop();}}}, _callee4, _this4);}))();
   },
-  comments: function comments() {var _this5 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {var bookId, _params$pageIndex3, pageIndex, _ref6, data, err;return _regenerator2.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:
-              bookId = params.bookId, _params$pageIndex3 = params.pageIndex, pageIndex = _params$pageIndex3 === undefined ? 1 : _params$pageIndex3;_context5.next = 3;return (
-                rest.GET(_config.config.urls.comments, {
-                  ReviewType: 112,
+  chapters: function chapters() {var _this5 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {var bookId, _params$pageIndex2, pageIndex, _ref6, data, err;return _regenerator2.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:
+              bookId = params.bookId, _params$pageIndex2 = params.pageIndex, pageIndex = _params$pageIndex2 === undefined ? -1 : _params$pageIndex2;_context5.next = 3;return (
+                rest.GET(_config.config.urls.chapters, {
                   bookId: bookId,
-                  pageIndex: pageIndex },
+                  pageIndex: pageIndex,
+                  requestSource: 0,
+                  timeStamp: 0 },
                 {
                   headers: {
                     'qdheader': qdheader } }));case 3:_ref6 = _context5.sent;data = _ref6.data;err = _ref6.err;if (!
@@ -152,6 +143,30 @@ var Qidian = {
 
 
               { data: data.Data });case 11:case 'end':return _context5.stop();}}}, _callee5, _this5);}))();
+  },
+  comments: function comments() {var _this6 = this;var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};return (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6() {var bookId, _params$pageIndex3, pageIndex, _ref7, data, err;return _regenerator2.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
+              bookId = params.bookId, _params$pageIndex3 = params.pageIndex, pageIndex = _params$pageIndex3 === undefined ? 1 : _params$pageIndex3;_context6.next = 3;return (
+                rest.GET(_config.config.urls.comments, {
+                  ReviewType: 112,
+                  bookId: bookId,
+                  pageIndex: pageIndex },
+                {
+                  headers: {
+                    'qdheader': qdheader } }));case 3:_ref7 = _context6.sent;data = _ref7.data;err = _ref7.err;if (!
+
+
+
+              err) {_context6.next = 8;break;}return _context6.abrupt('return',
+
+              { err: err });case 8:if (!(
+
+
+              data.Result !== 0)) {_context6.next = 10;break;}return _context6.abrupt('return',
+
+              { err: data.Message });case 10:return _context6.abrupt('return',
+
+
+              { data: data.Data });case 11:case 'end':return _context6.stop();}}}, _callee6, _this6);}))();
   } };exports.default =
 
 

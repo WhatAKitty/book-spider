@@ -3,6 +3,7 @@ import Router from 'koa-router';
 import ZhuishuClient from '../zhuishu.client';
 import QidianClient from '../qidian.client';
 import parserFactory from '../core/parser';
+import cheerio from 'cheerio';
 
 const BookApi = new Router({
   prefix: '/api/v2/books',
@@ -230,7 +231,7 @@ BookApi.get('/recommends', async (ctx, next) => {
     return;
   }
 
-  const {data, err} = await QidianClient.recommends();
+  const { data, err } = await QidianClient.recommends();
 
   if (err) {
     ctx.status = 400;
@@ -240,21 +241,49 @@ BookApi.get('/recommends', async (ctx, next) => {
     return;
   }
 
+  // wrap covers
+  const covers = await Promise.all(data.CoverList.map(async raw => {
+    const qidianBookId = raw.ActionUrl.substring('QDReader://ShowBook/'.length, raw.ActionUrl.length);
+    const { data: qidianBookHtml, err: qidianErr } = await QidianClient.bookInfoHtml({ bookId: qidianBookId });
+    if (qidianErr) {
+      console.error(`封面搜索图书 ${qidianBookId} 失败`, err);
+      return {};
+    }
+    // get bookName
+    const htmlStart = qidianBookHtml.indexOf('<body>');
+    const htmlEnd = qidianBookHtml.indexOf('</body>');
+    const $ = cheerio.load(qidianBookHtml.substring(htmlStart, htmlEnd + 7));
+    const bookName = $(`a[href="//book.qidian.com/info/${qidianBookId}"]`).text();
+    const { data: zhuishuBooks, err: zhuishuErr } = await ZhuishuClient.searchBooks({
+      key: bookName,
+    });
+    if (zhuishuErr) {
+      console.error(`封面搜索图书 ${bookName} 失败`, err);
+      return {};
+    }
+
+    console.log(`封面搜索到图书 ${zhuishuBooks[0].title}`);
+    return {
+      _id: `${zhuishuBooks[0]._id}`,
+      pic: raw.Pic,
+    };
+  }));
+
   // wrap groups
-  const result = await Promise.all(data.Group.map(async raw => {
+  const groups = await Promise.all(data.Group.map(async raw => {
     return {
       title: raw.Title,
       subTitle: raw.Subtitle,
       books: await Promise.all(raw.Data.map(async rawBook => {
-        const { data: zhuishuBooks, err: zhuishuErr} = await ZhuishuClient.searchBooks({
+        const { data: zhuishuBooks, err: zhuishuErr } = await ZhuishuClient.searchBooks({
           key: rawBook.BookName,
         });
-        if (err) {
+        if (zhuishuErr) {
           console.error(`搜索图书 ${rawBook.BookName} 失败`, err);
-          return true;
+          return {};
         }
 
-        console.log(`搜索到图书 ${zhuishuBooks[0].title}`)
+        console.log(`搜索到图书 ${zhuishuBooks[0].title}`);
         return {
           _id: `${zhuishuBooks[0]._id}`,
           title: rawBook.BookName,
@@ -268,6 +297,11 @@ BookApi.get('/recommends', async (ctx, next) => {
       })),
     };
   }));
+
+  const result = {
+    covers,
+    groups,
+  };
 
   cachedRecommends[key] = result;
 

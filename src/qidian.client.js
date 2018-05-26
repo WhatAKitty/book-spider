@@ -79,6 +79,21 @@ const Qidian = {
 
     return { data: data.Data };
   },
+  async bookInfoHtml(params = {}) {
+    const { bookId } = params;
+    const anotherRest = new Rest({
+      contentType: 'application/json',
+      dataType: 'text',
+    });
+    const { data, err } = await anotherRest.GET(`https://book.qidian.com/info/${bookId}`);
+
+    if (err) {
+      // 返回错误
+      return { err };
+    }
+
+    return { data: data };
+  },
   async bookInfo(params = {}) {
     const { bookId, iosDeviceType = 0 } = params;
     const { data, err } = await rest.GET(config.urls.info, {
