@@ -1,6 +1,7 @@
 
 import Router from 'koa-router';
 import ZhuishuClient from '../zhuishu.client';
+import QidianClient from '../qidian.client';
 import parserFactory from '../core/parser';
 
 const BookApi = new Router({
@@ -220,7 +221,7 @@ const BookApi = new Router({
  *         
  */
 BookApi.get('/recommends', async (ctx, next) => {
-  const { data, err } = await ZhuishuClient.recommends(ctx.query)
+  const {data, err} = await QidianClient.recommends();
 
   if (err) {
     ctx.status = 400;
@@ -230,8 +231,37 @@ BookApi.get('/recommends', async (ctx, next) => {
     return;
   }
 
+  // wrap groups
+  const result = await Promise.all(data.Group.map(async raw => {
+    return {
+      title: raw.Title,
+      subTitle: raw.Subtitle,
+      books: await Promise.all(raw.Data.map(async rawBook => {
+        const { data: zhuishuBooks, err: zhuishuErr} = await ZhuishuClient.searchBooks({
+          key: rawBook.BookName,
+        });
+        if (err) {
+          console.error(`搜索图书 ${rawBook.BookName} 失败`, err);
+          return true;
+        }
+
+        console.log(`搜索到图书 ${zhuishuBooks[0].title}`)
+        return {
+          _id: `${zhuishuBooks[0]._id}`,
+          title: rawBook.BookName,
+          author: rawBook.Author,
+          cover: `https://qidian.qpic.cn/qdbimg/349573/${rawBook.BookId}/180`,
+          majorCate: rawBook.CategoryName,
+          minorCate: undefined,
+          shortIntro: rawBook.Description,
+          lastChapter: rawBook.LastVipUpdateChapterName || rawBook.LastUpdateChapterName,
+        };
+      })),
+    };
+  }));
+
   ctx.status = 200;
-  ctx.body = data;
+  ctx.body = result;
 });
 
 /**
