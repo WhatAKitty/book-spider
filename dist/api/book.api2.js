@@ -220,13 +220,22 @@ var BookApi = new _koaRouter2.default({
                                    *           $ref: '#/definitions/BAD404'
                                    *         
                                    */
-BookApi.get('/recommends', function () {var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(ctx, next) {var _ref2, data, err, result;return _regenerator2.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
-              _qidian2.default.recommends());case 2:_ref2 = _context3.sent;data = _ref2.data;err = _ref2.err;if (!
+var cachedRecommends = {};
+BookApi.get('/recommends', function () {var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(ctx, next) {var date, key, _ref2, data, err, result;return _regenerator2.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+            date = new Date();
+            key = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay();if (!
+            cachedRecommends[key]) {_context3.next = 6;break;}
+            ctx.status = 200;
+            ctx.body = cachedRecommends[key];return _context3.abrupt('return');case 6:_context3.next = 8;return (
 
-            err) {_context3.next = 9;break;}
+
+
+              _qidian2.default.recommends());case 8:_ref2 = _context3.sent;data = _ref2.data;err = _ref2.err;if (!
+
+            err) {_context3.next = 15;break;}
             ctx.status = 400;
             ctx.body = {
-              msg: err };return _context3.abrupt('return');case 9:_context3.next = 11;return (
+              msg: err };return _context3.abrupt('return');case 15:_context3.next = 17;return (
 
 
 
@@ -254,14 +263,16 @@ BookApi.get('/recommends', function () {var _ref = (0, _asyncToGenerator3.defaul
                                           majorCate: rawBook.CategoryName,
                                           minorCate: undefined,
                                           shortIntro: rawBook.Description,
-                                          lastChapter: rawBook.LastVipUpdateChapterName || rawBook.LastUpdateChapterName });case 10:case 'end':return _context.stop();}}}, _callee, undefined);}));return function (_x4) {return _ref4.apply(this, arguments);};}())));case 4:_context2.t2 = _context2.sent;return _context2.abrupt('return', { title: _context2.t0, subTitle: _context2.t1, books: _context2.t2 });case 6:case 'end':return _context2.stop();}}}, _callee2, undefined);}));return function (_x3) {return _ref3.apply(this, arguments);};}())));case 11:result = _context3.sent;
+                                          lastChapter: rawBook.LastVipUpdateChapterName || rawBook.LastUpdateChapterName });case 10:case 'end':return _context.stop();}}}, _callee, undefined);}));return function (_x4) {return _ref4.apply(this, arguments);};}())));case 4:_context2.t2 = _context2.sent;return _context2.abrupt('return', { title: _context2.t0, subTitle: _context2.t1, books: _context2.t2 });case 6:case 'end':return _context2.stop();}}}, _callee2, undefined);}));return function (_x3) {return _ref3.apply(this, arguments);};}())));case 17:result = _context3.sent;
 
 
 
 
+
+            cachedRecommends[key] = result;
 
             ctx.status = 200;
-            ctx.body = result;case 14:case 'end':return _context3.stop();}}}, _callee3, undefined);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}());
+            ctx.body = result;case 21:case 'end':return _context3.stop();}}}, _callee3, undefined);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}());
 
 
 /**

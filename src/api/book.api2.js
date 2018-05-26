@@ -220,7 +220,16 @@ const BookApi = new Router({
  *           $ref: '#/definitions/BAD404'
  *         
  */
+const cachedRecommends = {};
 BookApi.get('/recommends', async (ctx, next) => {
+  const date = new Date();
+  const key = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`;
+  if (cachedRecommends[key]) {
+    ctx.status = 200;
+    ctx.body = cachedRecommends[key];
+    return;
+  }
+
   const {data, err} = await QidianClient.recommends();
 
   if (err) {
@@ -259,6 +268,8 @@ BookApi.get('/recommends', async (ctx, next) => {
       })),
     };
   }));
+
+  cachedRecommends[key] = result;
 
   ctx.status = 200;
   ctx.body = result;
